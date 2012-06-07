@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>navigationroutes.mvc4</id>
+    <version>1.0.0</version>
+    <authors>Eric Hexter, Matt Hinze</authors>
+    <description>This defines a route that can be used to create a navigation menu.</description>
+  </metadata>
+  <files>
+    <file src="NavigationRoutes\*.*" target="Content\NavigationRoutes"/>
+  </files>
+</package>
