@@ -9,7 +9,10 @@
       <dependency id="html5shiv" />
 	<dependency id="twitter.bootstrap" />
       	<dependency id="navigationroutes.mvc4" />
-	<dependency id="microsoft.web.optimization" />
+	<dependency id="microsoft.web.optimization" version="[1.0.0-beta2]"/>
+      	<dependency id="jquery" />
+      	<dependency id="Microsoft.jQuery.Unobtrusive.Ajax" />
+      	<dependency id="Microsoft.jQuery.Unobtrusive.Validation" />
     </dependencies> 
   </metadata>
   <files>
