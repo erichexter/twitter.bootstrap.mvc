@@ -16,9 +16,7 @@ namespace $rootnamespace$
                 ));
 
             bundles.Add(new StyleBundle("~/css").Include(
-                "~/Content/bootstrap.css",
-                "~/Content/bootstrap-responsive.min.css",
-                "~/Content/QD.css"
+                "~/Content/bootstrap.css"
                 ));
         }
     }

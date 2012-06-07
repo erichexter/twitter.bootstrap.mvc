@@ -16,6 +16,7 @@
             padding-bottom: 40px;
           }
         </style>
+	<link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
         @RenderSection("head", required: false)
         @Html.Partial("_html5shiv")
         @* favicons and touch icons go here *@
