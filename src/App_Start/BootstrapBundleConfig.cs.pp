@@ -8,14 +8,14 @@ namespace $rootnamespace$
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/js").Include(
+            bundles.Add(new ScriptBundle("~/js").Include(
                 "~/Scripts/jquery-1.*",
                 "~/Scripts/jquery.validate.min.js",
                 "~/Scripts/jquery.validate.unobtrusive-custom-for-bootstrap.js",
                 "~/Scripts/bootstrap.min.js"
                 ));
 
-            bundles.Add(new StyleBundle("~/bundles/css").Include(
+            bundles.Add(new StyleBundle("~/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/bootstrap-responsive.min.css",
                 "~/Content/QD.css"

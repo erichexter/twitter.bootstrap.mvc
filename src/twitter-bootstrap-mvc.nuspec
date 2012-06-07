@@ -16,6 +16,7 @@
     </dependencies> 
   </metadata>
   <files>
+    <file src="readme.txt" target="readme.txt"></file>
     <file src="App_Start\*.*" target="Content\App_Start"></file>
     <file src="BootstrapSupport\*.*" target="Content\BootstrapSupport"></file>
     <file src="Views\Shared\_BootstrapLayout.cshtml.pp" target="Content\Views\Shared"></file>
