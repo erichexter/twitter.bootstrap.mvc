@@ -1,6 +1,7 @@
 ﻿@using System.Web.Optimization
 @using $rootnamespace$
 @using $rootnamespace$.BootstrapSupport
+@using NavigationRoutes
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,7 +29,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">QD</a>
+                    <a class="brand" href="#">$rootnamespace$</a>
                     <div class="nav-collapse">
                         <ul class="nav">
                            @Html.Navigation()

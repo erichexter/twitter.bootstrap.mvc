@@ -7,11 +7,13 @@
     <description>This has the bootstrap layout and supporting files to quickly add Twitter Bootstrap to an MVC 4 application</description>
 	  <dependencies>
       <dependency id="html5shiv" />
-	    <dependency id="twitter.bootstrap" />
-      <dependency id="navigationroutes.mvc4" />
+	<dependency id="twitter.bootstrap" />
+      	<dependency id="navigationroutes.mvc4" />
+	<dependency id="microsoft.web.optimization" />
     </dependencies> 
   </metadata>
   <files>
+    <file src="App_Start\*.*" target="Content\App_Start"></file>
     <file src="BootstrapSupport\*.*" target="Content\BootstrapSupport"></file>
     <file src="Views\Shared\_BootstrapLayout.cshtml.pp" target="Content\Views\Shared"></file>
     <file src="Views\_ViewStart.cshtml" target="Content\Views"></file>
