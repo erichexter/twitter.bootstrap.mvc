@@ -8,7 +8,7 @@
         <meta charset="utf-8">
         <title>@ViewBag.Title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="@Styles.Url("~/css")" rel="stylesheet"/>
+        <link href="@Styles.Url("~/content/css")" rel="stylesheet"/>
         <script type="text/javascript" src="@Scripts.Url("~/js")"></script>
         <style type="text/css">
           body {
@@ -16,7 +16,7 @@
             padding-bottom: 40px;
           }
         </style>
-	<link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	<link href="@Styles.Url("~/Content/css-responsive")" rel="stylesheet" type="text/css" />
         @RenderSection("head", required: false)
         @Html.Partial("_html5shiv")
         @* favicons and touch icons go here *@

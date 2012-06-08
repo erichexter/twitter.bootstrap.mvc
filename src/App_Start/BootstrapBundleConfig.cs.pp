@@ -15,8 +15,11 @@ namespace $rootnamespace$
                 "~/Scripts/bootstrap.min.js"
                 ));
 
-            bundles.Add(new StyleBundle("~/css").Include(
+            bundles.Add(new StyleBundle("~/content/css").Include(
                 "~/Content/bootstrap.css"
+                ));
+            bundles.Add(new StyleBundle("~/content/css-responsive").Include(
+                "~/Content/bootstrap-responsive.css"
                 ));
         }
     }
