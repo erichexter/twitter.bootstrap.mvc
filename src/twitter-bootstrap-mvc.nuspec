@@ -9,7 +9,7 @@
       <dependency id="html5shiv" />
 	<dependency id="twitter.bootstrap" />
       	<dependency id="navigationroutes.mvc4" />
-	<dependency id="microsoft.web.optimization" version="[1.0.0-beta2]"/>
+	      <dependency id="microsoft.web.optimization" version="[1.0.0-beta2]"/>
       	<dependency id="jquery" />
       	<dependency id="Microsoft.jQuery.Unobtrusive.Ajax" />
       	<dependency id="Microsoft.jQuery.Unobtrusive.Validation" />
@@ -17,6 +17,7 @@
   </metadata>
   <files>
     <file src="readme.txt" target="readme.txt"></file>
+    <file src="tools\*.*" target="tools"></file>
     <file src="App_Start\*.*" target="Content\App_Start"></file>
     <file src="BootstrapSupport\*.*" target="Content\BootstrapSupport"></file>
     <file src="Views\Shared\_BootstrapLayout.cshtml.pp" target="Content\Views\Shared"></file>
