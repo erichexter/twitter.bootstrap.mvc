@@ -6,8 +6,8 @@
     <authors>Eric Hexter, Matt Hinze</authors>
     <description>This has the bootstrap layout and supporting files to quickly add Twitter Bootstrap to an MVC 4 application</description>
 	  <dependencies>
-      <dependency id="html5shiv" />
-	<dependency id="twitter.bootstrap" />
+        <dependency id="html5shiv" />
+	      <dependency id="twitter.bootstrap" />
       	<dependency id="navigationroutes.mvc4" />
 	      <dependency id="microsoft.web.optimization" version="[1.0.0-beta2]"/>
       	<dependency id="jquery" />
