@@ -46,7 +46,7 @@
 @*                <p>&copy; Company 2012</p>*@
             </footer> 
         </div>
-         @RenderSection("scripts", required: false)
+         @RenderSection("Scripts", required: false)
     </body>
 </html>
 
