@@ -17,7 +17,7 @@
   </metadata>
   <files>
     <file src="readme.txt" target="readme.txt"></file>
-    <file src="CodeTemplates\*.*" target="Content\CodeTemplates"></file>
+    <file src="CodeTemplates\**\*.*" target="Content\CodeTemplates"></file>
     <file src="tools\*.*" target="tools"></file>
     <file src="App_Start\*.*" target="Content\App_Start"></file>
     <file src="BootstrapSupport\*.*" target="Content\BootstrapSupport"></file>
