@@ -1,6 +1,6 @@
-ï»¿@using System.Web.Optimization
+@using System.Web.Optimization
 @using $rootnamespace$
-@using $rootnamespace$.BootstrapSupport
+@using BootstrapSupport
 @using NavigationRoutes
 <!DOCTYPE html>
 <html lang="en">
@@ -33,17 +33,26 @@
                     <a class="brand" href="#">$rootnamespace$</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                           @Html.Navigation()
+                            @Html.Navigation()
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
-        </div>
+        </div>        
+        @if (TempData.ContainsKey("attenion"))
+        {
+            <div class="alert alert-block">
+              <a class="close" data-dismiss="alert" href="#">×</a>
+              <h4 class="alert-heading">Attenion!</h4>
+              @TempData["attenion"]
+            </div>
+        }
         <div class="container">
+            @Html.Partial("_alerts")
             @RenderBody()   
             <hr>
             <footer>
-@*                <p>&copy; Company 2012</p>*@
+                @*                <p>&copy; Company 2012</p>*@
             </footer> 
         </div>
          @RenderSection("Scripts", required: false)

@@ -1,0 +1,19 @@
+@if (TempData.ContainsKey("success"))
+{
+    <div class="alert alert-success">
+        @TempData["success"]
+    </div>
+}
+@if (TempData.ContainsKey("info"))
+{
+    <div class="alert alert-info">
+        @TempData["infor"]
+    </div>
+}
+@if (TempData.ContainsKey("error"))
+{
+    <div class="alert alert-error">
+        @TempData["error"]
+    </div>
+}
+                
