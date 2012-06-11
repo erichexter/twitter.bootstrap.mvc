@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 
-namespace $rootnamespace$.BootstrapSupport
+namespace BootstrapSupport
 {
     public static class ControlGroupExtensions
     {
