@@ -1,4 +1,5 @@
-﻿@model $rootnamespace$.Models.HomeInputModel
+﻿@using BootstrapSupport
+@model $rootnamespace$.Models.HomeInputModel
 @{
     ViewBag.Title = "Index";
 }
