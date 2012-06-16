@@ -34,6 +34,7 @@ if($globalasax -ne $null) {
 }
 
 
+$project.ProjectItems.Item("codetemplates").ProjectItems.Item("addview").projectitems.item("cshtml").projectitems.item("bootstrapform.tt").properties.item("customtool").Value=""
 
 
 
