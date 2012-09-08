@@ -7,7 +7,7 @@ using $rootnamespace$.Models;
 
 namespace $rootnamespace$.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BootstrapBaseController
     {
         //
         // GET: /Home/
