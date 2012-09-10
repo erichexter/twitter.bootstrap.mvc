@@ -1,79 +1,68 @@
 ﻿@using BootstrapSupport
-@model $rootnamespace$.Models.HomeInputModel
+@using $rootnamespace$.Models
+@model IEnumerable<$rootnamespace$.Models.HomeInputModel>
 @{
     ViewBag.Title = "Index";
 }
-<h2>Index</h2>
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
 
-    <fieldset class="form-horizontal">
-        <legend>HomeInputModel</legend>
+    <h2>Scafolding Example</h2>
+<p>This is a basic example of some CRUD controllers and views which utilize the templates. 
+    This manages an in memory model list. This example models a Post Redirect Get PRG pattern, it uses temp data and bootstrap to 
+    add addtional context across the PRG.</p>
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new {@class = "btn"})
+    </p>
+    
+    <table class="table table-striped">
+        <caption>New widget</caption>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Blog)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (HomeInputModel item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Blog)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                            Action
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Edit", "Edit", new {id=item.Id})</li>
+                            <li>@Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */})</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Delete", "Delete", new { id=item.Id})</li>
+                        </ul>
+                    </div>
 
+                </td>
+            </tr>
+        }
 
-         @Html.BeginControlGroupFor(model=>model.Name)
-
-            @Html.LabelFor(model => model.Name,new {@class="control-label"})
-
-        
-        <div class="controls">
-
-            @Html.EditorFor(model => model.Name,new {@class="input-xlarge"})
-
-            @Html.ValidationMessageFor(model => model.Name,null,new{@class="help-inline"})
-		</div>
-        @Html.EndControlGroup()
-
-
-         @Html.BeginControlGroupFor(model=>model.Blog)
-
-            @Html.LabelFor(model => model.Blog,new {@class="control-label"})
-
-        
-        <div class="controls">
-
-            @Html.EditorFor(model => model.Blog,new {@class="input-xlarge"})
-
-            @Html.ValidationMessageFor(model => model.Blog,null,new{@class="help-inline"})
-		</div>
-        @Html.EndControlGroup()
-
-
-         @Html.BeginControlGroupFor(model=>model.StartDate)
-
-            @Html.LabelFor(model => model.StartDate,new {@class="control-label"})
-
-        
-        <div class="controls">
-
-            @Html.EditorFor(model => model.StartDate,new {@class="input-xlarge"})
-
-            @Html.ValidationMessageFor(model => model.StartDate,null,new{@class="help-inline"})
-		</div>
-        @Html.EndControlGroup()
-
-
-         @Html.BeginControlGroupFor(model=>model.Password)
-
-            @Html.LabelFor(model => model.Password,new {@class="control-label"})
-
-        
-        <div class="controls">
-
-            @Html.EditorFor(model => model.Password,new {@class="input-xlarge"})
-
-            @Html.ValidationMessageFor(model => model.Password,null,new{@class="help-inline"})
-		</div>
-        @Html.EndControlGroup()
-
-
-		<div class="form-actions">
-            <button type="submit" class="btn btn-primary">Save changes</button>
-            <button class="btn">Cancel</button>
-          </div>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    </table>

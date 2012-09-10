@@ -10,9 +10,10 @@ namespace $rootnamespace$
         {
             bundles.Add(new ScriptBundle("~/js").Include(
                 "~/Scripts/jquery-1.*",
-                "~/Scripts/jquery.validate.min.js",
-                "~/Scripts/jquery.validate.unobtrusive-custom-for-bootstrap.js",
-                "~/Scripts/bootstrap.min.js"
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/jquery.validate.js",
+                "~/scripts/jquery.validate.unobtrusive.js",
+                "~/Scripts/jquery.validate.unobtrusive-custom-for-bootstrap.js"
                 ));
 
             bundles.Add(new StyleBundle("~/content/css").Include(

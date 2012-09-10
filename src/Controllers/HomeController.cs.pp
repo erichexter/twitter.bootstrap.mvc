@@ -9,107 +9,78 @@ namespace $rootnamespace$.Controllers
 {
     public class HomeController : BootstrapBaseController
     {
-        //
-        // GET: /Home/
-
+        private static List<HomeInputModel> _models = new List<HomeInputModel>()
+                                                          {
+                                          new HomeInputModel
+                                              {
+                                                  Id=1,
+                                                  Blog = "http://foobar.com",
+                                                  Name = "asdf",
+                                                  Password = "asdfsd",
+                                                  StartDate = DateTime.Now.AddYears(1)
+                                              },
+                                          new HomeInputModel
+                                              {
+                                                  Id=2,
+                                                  Blog = "http://foobar.com",
+                                                  Name = "fffff",
+                                                  Password = "dddddddasdfsd",
+                                                  StartDate = DateTime.Now.AddYears(2)
+                                              },                    
+                                                          };
         public ActionResult Index()
         {
-            return View();
+           
+            var homeInputModels = _models;                                      
+            return View(homeInputModels);
         }
+
         [HttpPost]
-        public ActionResult Index(HomeInputModel model)
+        public ActionResult Create(HomeInputModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                TempData.Add("success","Your information was saved!");
+                model.Id = _models.Count==0?1:_models.Select(x => x.Id).Max() + 1;
+                _models.Add(model);
+                Success("Your information was saved!");
                 return RedirectToAction("Index");
             }
+            Error("there were some errors in your form.");
             return View(model);
         }
-        //
-        // GET: /Home/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
-        // GET: /Home/Create
 
         public ActionResult Create()
         {
             return View();
         }
 
-        //
-        // POST: /Home/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Home/Edit/5
-
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Home/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Home/Delete/5
-
         public ActionResult Delete(int id)
         {
-            return View();
+            _models.Remove(_models.First(x => x.Id == id));
+            Information("Your widget was deleted");
+            if(_models.Count==0)
+            {
+                Attention("You have deleted all the models! Create a new one to continue the demo.");
+            }
+            return RedirectToAction("index");
         }
-
-        //
-        // POST: /Home/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Edit(int id)
         {
-            try
+            var model = _models.First(x => x.Id == id);
+            return View("Create", model);
+        }
+        [HttpPost]        
+        public ActionResult Edit(HomeInputModel model,int id)
+        {
+            if(ModelState.IsValid)
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                _models.Remove(_models.First(x => x.Id == id));
+                model.Id = id;
+                _models.Add(model);
+                Success("The model was updated!");
+                return RedirectToAction("index");
             }
-            catch
-            {
-                return View();
-            }
+            return View("Create", model);
         }
     }
 }

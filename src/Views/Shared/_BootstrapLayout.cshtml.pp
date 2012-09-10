@@ -9,7 +9,6 @@
         <title>@ViewBag.Title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="@Styles.Url("~/content/css")" rel="stylesheet"/>
-        <script type="text/javascript" src="@Scripts.Url("~/js")"></script>
         <style type="text/css">
           body {
             padding-top: 60px;
