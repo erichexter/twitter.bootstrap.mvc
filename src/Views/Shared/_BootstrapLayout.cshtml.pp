@@ -38,14 +38,6 @@
                 </div>
             </div>
         </div>        
-        @if (TempData.ContainsKey("attenion"))
-        {
-            <div class="alert alert-block">
-              <a class="close" data-dismiss="alert" href="#">×</a>
-              <h4 class="alert-heading">Attenion!</h4>
-              @TempData["attenion"]
-            </div>
-        }
         <div class="container">
             @Html.Partial("_alerts")
             @RenderBody()   
@@ -55,6 +47,7 @@
             </footer> 
         </div>
          @RenderSection("Scripts", required: false)
+         @Scripts.Render("~/js")
     </body>
 </html>
 

@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using BootstrapSupport;
 
 namespace $rootnamespace$.Controllers
 {
