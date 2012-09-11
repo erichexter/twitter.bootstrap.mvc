@@ -9,25 +9,7 @@ namespace $rootnamespace$.Controllers
 {
     public class HomeController : BootstrapBaseController
     {
-        private static List<HomeInputModel> _models = new List<HomeInputModel>()
-                                                          {
-                                          new HomeInputModel
-                                              {
-                                                  Id=1,
-                                                  Blog = "http://foobar.com",
-                                                  Name = "asdf",
-                                                  Password = "asdfsd",
-                                                  StartDate = DateTime.Now.AddYears(1)
-                                              },
-                                          new HomeInputModel
-                                              {
-                                                  Id=2,
-                                                  Blog = "http://foobar.com",
-                                                  Name = "fffff",
-                                                  Password = "dddddddasdfsd",
-                                                  StartDate = DateTime.Now.AddYears(2)
-                                              },                    
-                                                          };
+        private static List<HomeInputModel> _models = ModelIntializer.CreateHomeInputModels();
         public ActionResult Index()
         {
            
@@ -56,7 +38,7 @@ namespace $rootnamespace$.Controllers
 
         public ActionResult Delete(int id)
         {
-            _models.Remove(_models.First(x => x.Id == id));
+            _models.Remove(_models.Get(id));
             Information("Your widget was deleted");
             if(_models.Count==0)
             {
@@ -66,7 +48,7 @@ namespace $rootnamespace$.Controllers
         }
         public ActionResult Edit(int id)
         {
-            var model = _models.First(x => x.Id == id);
+            var model = _models.Get(id);
             return View("Create", model);
         }
         [HttpPost]        
@@ -74,7 +56,7 @@ namespace $rootnamespace$.Controllers
         {
             if(ModelState.IsValid)
             {
-                _models.Remove(_models.First(x => x.Id == id));
+                _models.Remove(_models.Get(id));
                 model.Id = id;
                 _models.Add(model);
                 Success("The model was updated!");
@@ -82,5 +64,12 @@ namespace $rootnamespace$.Controllers
             }
             return View("Create", model);
         }
+
+		public ActionResult Details(int id)
+        {
+            var model = _models.Get(id);
+            return View(model);
+        }
+
     }
 }

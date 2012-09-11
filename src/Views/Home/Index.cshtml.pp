@@ -55,7 +55,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Edit", "Edit", new {id=item.Id})</li>
-                            <li>@Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */})</li>
+                            <li>@Html.ActionLink("Details", "Details", new {id=item.Id})</li>
                             <li class="divider"></li>
                             <li>@Html.ActionLink("Delete", "Delete", new { id=item.Id})</li>
                         </ul>
