@@ -33,7 +33,7 @@ namespace $rootnamespace$.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View(new HomeInputModel());
         }
 
         public ActionResult Delete(int id)
