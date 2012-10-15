@@ -22,14 +22,14 @@ namespace BootstrapSupport
         }
 
 
-        public static PropertyInfo[] VisibleProperties(this HtmlHelper helper, IEnumerable Model)
+        public static PropertyInfo[] VisibleProperties(this IEnumerable Model)
         {
             var elementType = Model.GetType().GetElementType();
             if (elementType == null)
             {
                 elementType = Model.GetType().GetGenericArguments()[0];
             }
-            return elementType.GetProperties().Where(info => info.PropertyType != typeof(Guid)).ToArray();
+            return elementType.GetProperties().Where(info => info.Name != elementType.IdentifierPropertyName()).ToArray();
         }
 
         public static PropertyInfo[] VisibleProperties(this Object model)
@@ -49,17 +49,22 @@ namespace BootstrapSupport
         }
         public static string IdentifierPropertyName(this Object model)
         {
-            if(model.GetType().GetProperties().Any(info => info.PropertyType.AttributeExists<System.ComponentModel.DataAnnotations.KeyAttribute>()))
+            return IdentifierPropertyName(model.GetType());
+        }
+
+        public static string IdentifierPropertyName(this Type type)
+        {
+            if (type.GetProperties().Any(info => info.PropertyType.AttributeExists<System.ComponentModel.DataAnnotations.KeyAttribute>()))
             {
                 return
-                    model.GetType().GetProperties().First(
+                    type.GetProperties().First(
                         info => info.PropertyType.AttributeExists<System.ComponentModel.DataAnnotations.KeyAttribute>())
                         .Name;
             }
-            else if(model.GetType().GetProperties().Any(p=>p.Name.Equals("id",StringComparison.CurrentCultureIgnoreCase)))
+            else if (type.GetProperties().Any(p => p.Name.Equals("id", StringComparison.CurrentCultureIgnoreCase)))
             {
                 return
-                    model.GetType().GetProperties().First(
+                    type.GetProperties().First(
                         p => p.Name.Equals("id", StringComparison.CurrentCultureIgnoreCase)).Name;
             }
             return "";

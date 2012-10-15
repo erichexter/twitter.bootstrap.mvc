@@ -5,7 +5,7 @@
     <caption></caption>
     <thead>
         <tr>
-            @foreach(var property in Html.VisibleProperties(Model))
+            @foreach (var property in Model.VisibleProperties())
             {
                 <th>
                     @property.GetLabel().ToSeparatedWords()
