@@ -108,5 +108,24 @@ namespace BootstrapSupport
         {
             return propertyInfo.GetCustomAttributes(typeof(T), false).FirstOrDefault() as T;
         }
+
+        public static string GetLabel(this Object Model)
+        {
+            return Model.GetType().Name.ToSeparatedWords();
+        }
+
+        public static string GetLabel(this IEnumerable Model)
+        {
+            var elementType = Model.GetType().GetElementType();
+            if (elementType == null)
+            {
+                elementType = Model.GetType().GetGenericArguments()[0];
+            }
+            return elementType.Name.ToSeparatedWords();
+        }
+
+
+        
+
     }
 }
