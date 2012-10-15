@@ -13,6 +13,5 @@
   <files>
     <file src="Controllers\*.*" target="Content\Controllers"></file>
     <file src="Models\*.*" target="Content\Models"></file>
-    <file src="Views\Home\*.*" target="Content\Views\Home"></file>
   </files>
 </package>
