@@ -34,7 +34,7 @@ namespace BootstrapSupport
 
         public static PropertyInfo[] VisibleProperties(this Object model)
         {
-            return model.GetType().GetProperties().Where(info => info.PropertyType != typeof(Guid)).ToArray();
+            return model.GetType().GetProperties().Where(info => info.Name != model.IdentifierPropertyName()).ToArray();
         }
 
         public static RouteValueDictionary GetIdValue(this object model)
