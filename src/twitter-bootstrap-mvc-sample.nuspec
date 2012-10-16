@@ -2,6 +2,7 @@
 <package>
   <metadata>
     <id>twitter.bootstrap.mvc4.sample</id>
+    <title>Twitter Bootstrap for ASP.Net MVC 4 Sample</title>
     <version>1.0.0</version>
     <authors>Eric Hexter, Matt Hinze</authors>
     <description>This is a sample for the bootstrap layout and supporting files to quickly add Twitter Bootstrap to an MVC 4 application</description>

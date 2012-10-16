@@ -2,10 +2,14 @@
 <package>
   <metadata>
     <id>twitter.bootstrap.mvc4</id>
+    <title>Twitter Bootstrap for ASP.Net MVC 4</title>
     <version>1.0.0</version>
     <authors>Eric Hexter, Matt Hinze</authors>
-    <description>This has the bootstrap layout and supporting files to quickly add Twitter Bootstrap to an MVC 4 application</description>
+    <description>This has the bootstrap layout and supporting files to quickly add Twitter 
+    Bootstrap to an MVC 4 application. Install the twitter.bootstrap.mvc4.sample to see how
+    to use the auto scaffolding feature.</description>
     <projectUrl>https://github.com/erichexter/twitter.bootstrap.mvc</projectUrl>
+    <releaseNotes>https://github.com/erichexter/twitter.bootstrap.mvc/commits/master</releaseNotes>
     <dependencies>
         <dependency id="html5shiv" />
 	      <dependency id="twitter.bootstrap" />
