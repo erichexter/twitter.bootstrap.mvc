@@ -46,8 +46,8 @@
                 @*                <p>&copy; Company 2012</p>*@
             </footer> 
         </div>
-         @RenderSection("Scripts", required: false)
          @Scripts.Render("~/js")
+         @RenderSection("Scripts", required: false)
     </body>
 </html>
 
