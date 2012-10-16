@@ -33,6 +33,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         @{
+                            @Html.TryPartial("_actions", model)                            
                             var routevalues = model.GetIdValue();  
                             <li>@Html.ActionLink("Edit", "Edit", routevalues)</li>
                             <li>@Html.ActionLink("Details", "Details", routevalues)</li>
@@ -45,7 +46,7 @@
 
             </td>
         </tr>
-        index++;
+            index++;
     }
 
 </table>

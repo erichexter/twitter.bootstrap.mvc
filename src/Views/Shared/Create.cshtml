@@ -8,7 +8,7 @@
         @foreach (var property in Model.VisibleProperties())
         {
             @Html.BeginControlGroupFor(property.Name)
-                @Html.Label(property.Name, new { @class = "control-label" })
+                @Html.Label(property.Name.ToSeparatedWords(), new { @class = "control-label" })
                 <div class="controls">
                     @Html.Editor(property.Name, new { @class = "input-xlarge" })
                     @Html.ValidationMessage(property.Name, null, new { @class = "help-inline" })
