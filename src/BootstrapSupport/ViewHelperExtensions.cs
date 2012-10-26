@@ -128,23 +128,20 @@ namespace BootstrapSupport
             }
             return elementType.Name.ToSeparatedWords();
         }
+    }
 
-
-        public static class HtmlHelperExtensions
+    public static class HtmlHelperExtensions
+    {
+        public static MvcHtmlString TryPartial(this HtmlHelper helper, string viewName, object model)
         {
-            public static MvcHtmlString TryPartial(this HtmlHelper helper, string viewName, object model)
+            try
             {
-                try
-                {
-                    return helper.Partial(viewName, model);
-                }
-                catch (Exception)
-                {
-                }
-                return MvcHtmlString.Empty;
+                return helper.Partial(viewName, model);
             }
+            catch (Exception)
+            {
+            }
+            return MvcHtmlString.Empty;
         }
-
-
     }
 }
