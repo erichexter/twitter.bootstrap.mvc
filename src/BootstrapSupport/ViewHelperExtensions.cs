@@ -22,7 +22,6 @@ namespace BootstrapSupport
             return ((MethodCallExpression)actionExpression.Body).Method.Name;
         }
 
-
         public static PropertyInfo[] VisibleProperties(this IEnumerable Model)
         {
             var elementType = Model.GetType().GetElementType();
@@ -44,10 +43,13 @@ namespace BootstrapSupport
             v.Add(model.IdentifierPropertyName(), model.GetId());
             return v;
         }
+
         public static object GetId(this object model)
         {
             return model.GetType().GetProperty(model.IdentifierPropertyName()).GetValue(model,new object[0]);
         }
+
+
         public static string IdentifierPropertyName(this Object model)
         {
             return IdentifierPropertyName(model.GetType());
@@ -76,12 +78,14 @@ namespace BootstrapSupport
             var meta = ModelMetadataProviders.Current.GetMetadataForProperty(null, propertyInfo.DeclaringType, propertyInfo.Name);
             return meta.GetDisplayName();
         }
+
         public static string ToSeparatedWords(this string value)
         {
             return Regex.Replace(value, "([A-Z][a-z])", " $1").Trim();
         }
 
     }
+
     public static class PropertyInfoExtensions
     {
         public static bool AttributeExists<T>(this PropertyInfo propertyInfo) where T : class
