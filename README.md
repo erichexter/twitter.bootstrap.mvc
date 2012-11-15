@@ -5,13 +5,11 @@ This has the bootstrap layout and supporting files to quickly add [Twitter Boots
 
 	> Install-Package twitter.bootstrap.mvc4
 
-Install the [twitter.bootstrap.mvc4.sample](http://nuget.org/packages/twitter.bootstrap.mvc4.sample) to see how to use the auto scaffolding feature.
+To view a working sample, install the [twitter.bootstrap.mvc4.sample](http://nuget.org/packages/twitter.bootstrap.mvc4.sample).
 
 	> Install-Package twitter.bootstrap.mvc4.sample
 
-Brought to you by [Eric Hexter](http://lostechies.com/erichexter/)
 
----------------------------------------------------
 
 **Warning**: After installing the package, you may get build errors.
 
@@ -19,3 +17,6 @@ Brought to you by [Eric Hexter](http://lostechies.com/erichexter/)
 2. Compiling transformation: The type or namespace name 'MvcTextTemplateHost' could not be found (are you missing a using directive or an assembly reference?) 
 
 #### Closing and reopening the solution will resolve these issues
+
+
+Brought to you by [Eric Hexter](http://lostechies.com/erichexter/)
