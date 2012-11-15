@@ -5,9 +5,8 @@ namespace $rootnamespace$.Controllers
 {
     public class BootstrapBaseController: Controller
     {
-
-	        public void Attention(string message)
-        {            
+        public void Attention(string message)
+        {
             TempData.Add(Alerts.ATTENTION, message);
         }
 
