@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using System.Web.Routing;
 
 namespace BootstrapSupport
