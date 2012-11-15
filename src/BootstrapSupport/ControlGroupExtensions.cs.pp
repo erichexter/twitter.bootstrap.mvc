@@ -37,13 +37,11 @@ namespace BootstrapSupport
             return MvcHtmlString.Create(openingTag);
         }
 
-
         public static IHtmlString EndControlGroup(this HtmlHelper html)
         {
             return MvcHtmlString.Create("</div>");
         }
     }
-
 
     public static class Alerts
     {
@@ -59,6 +57,7 @@ namespace BootstrapSupport
                 return new[]
                            {
                                SUCCESS,
+                               ATTENTION,
                                INFORMATION,
                                ERROR
                            };

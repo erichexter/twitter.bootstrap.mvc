@@ -21,6 +21,7 @@ namespace $rootnamespace$.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }
+
     public static class ModelIntializer
     {
         public static List<HomeInputModel> CreateHomeInputModels()
@@ -49,9 +50,9 @@ namespace $rootnamespace$.Models
 
     public static class ModelExtention
     {
-    public static HomeInputModel Get(this List<HomeInputModel> models,int id)
-    {
-        return models.First(x => x.Id == id);
-    }
+        public static HomeInputModel Get(this List<HomeInputModel> models, int id)
+        {
+            return models.First(x => x.Id == id);
+        }
     }
 }
