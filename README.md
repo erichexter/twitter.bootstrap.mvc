@@ -16,7 +16,7 @@ To view a working sample, install the [twitter.bootstrap.mvc4.sample](http://nug
 1. Compiling transformation: The type or namespace name 'Web' does not exist in the namespace 'Microsoft.VisualStudio' (are you missing an assembly reference?) 
 2. Compiling transformation: The type or namespace name 'MvcTextTemplateHost' could not be found (are you missing a using directive or an assembly reference?) 
 
-#### Closing and reopening the solution will resolve these issues
+_To resolve these build errors simply close and reopen the solution_
 
 
 Brought to you by [Eric Hexter](http://lostechies.com/erichexter/)
