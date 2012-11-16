@@ -1,4 +1,4 @@
-[twitter.bootstrap.mvc](https://github.com/devlife/twitter.bootstrap.mvc)
+[twitter.bootstrap.mvc]
 ===================================================
 
 This has the bootstrap layout and supporting files to quickly add [Twitter Bootstrap](http://twitter.github.com/bootstrap/) to an MVC 4 application. <br />
