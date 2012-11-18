@@ -21,3 +21,8 @@ _To resolve these build errors simply close and reopen the solution_
 
 
 Brought to you by [Eric Hexter](http://lostechies.com/erichexter/)
+
+
+The automated build is located here: (http://teamcity.codebetter.com/viewType.html?buildTypeId=bt676&tab=buildTypeStatusDiv)
+
+The preview releases are on this nuget feed (http://www.myget.org/F/erichexter/)
