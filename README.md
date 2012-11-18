@@ -2,6 +2,9 @@ twitter.bootstrap.mvc
 ===================================================
 
 This has the bootstrap layout and supporting files to quickly add [Twitter Bootstrap](http://twitter.github.com/bootstrap/) to an MVC 4 application. <br />
+
+See the [Overview](http://lostechies.com/erichexter/2012/11/19/twitter-bootstrap-mvc4-the-template-nuget-package-for-asp-net-mvc4-projects/)
+
 To view a working sample, install the [twitter.bootstrap.mvc4.sample](http://nuget.org/packages/twitter.bootstrap.mvc4.sample).
 
 	> Install-Package twitter.bootstrap.mvc4
