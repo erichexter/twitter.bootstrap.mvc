@@ -28,8 +28,9 @@ namespace NavigationRoutes
         public static IHtmlString Navigation(this HtmlHelper helper)
         {
             return new CompositeMvcHtmlString(
-                RouteTable.Routes.OfType<NamedRoute>().Select(
-                    namedRoute => helper.NavigationListItemRouteLink(namedRoute.DisplayName, namedRoute.Name)));
+                RouteTable.Routes.OfType<NamedRoute>()
+                    .Where(namedRoute => string.IsNullOrEmpty(namedRoute.Role) || helper.ViewContext.HttpContext.User.IsInRole(namedRoute.Role))
+                    .Select(namedRoute => helper.NavigationListItemRouteLink(namedRoute.DisplayName, namedRoute.Name)));
         }
 
         public static MvcHtmlString NavigationListItemRouteLink(this HtmlHelper html, string linkText, string routeName)
