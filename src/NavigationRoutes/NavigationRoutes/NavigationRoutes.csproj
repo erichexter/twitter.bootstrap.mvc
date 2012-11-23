@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="NamedRoute.cs" />
     <Compile Include="NavigationExtensions.cs" />
+    <Compile Include="NavigationRouteConfigurationExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
