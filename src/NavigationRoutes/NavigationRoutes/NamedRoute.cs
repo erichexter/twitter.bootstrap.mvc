@@ -5,8 +5,8 @@ namespace NavigationRoutes
 {
     public class NamedRoute : Route
     {
-        readonly string _name;
-        readonly string _displayName;
+         string _name;
+         string _displayName;
 
         public NamedRoute(string name, string url, IRouteHandler routeHandler)
             : base(url, routeHandler)
@@ -45,11 +45,13 @@ namespace NavigationRoutes
         public string Name
         {
             get { return _name; }
+            set { _name = value; }
         }
 
         public string DisplayName
         {
             get { return _displayName ?? _name; }
+            set { _displayName = value; }
         }
     }
 }
