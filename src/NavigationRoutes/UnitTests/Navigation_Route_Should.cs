@@ -22,13 +22,25 @@ namespace UnitTests
             routes.MapNavigationRoute<HomeController>("Home", c => c.Index());
             routes.MapNavigationRoute<HomeController>("About", c => c.About());
 
+            routes.Count.ShouldNotEqual(0);
+
+            var uh = GetUrlHelper(routes);
+
+            uh.RouteUrl("Navigation-Home-About").ShouldEqual("/about"); 
+        }
+
+        [Test]
+        public void Map_home_index_to_the_site_root()
+        {
+            var routes = new System.Web.Routing.RouteCollection();
+
+            routes.MapNavigationRoute<HomeController>("Home", c => c.Index());
+            routes.MapNavigationRoute<HomeController>("About", c => c.About());
 
             routes.Count.ShouldNotEqual(0);
 
             var uh = GetUrlHelper(routes);
-            uh.RouteUrl("Navigation-Home-Index").ShouldEqual("/index");
-            uh.RouteUrl("Navigation-Home-About").ShouldEqual("/about");
- 
+            uh.RouteUrl("Navigation-Home-Index").ShouldEqual("/");
         }
     }
 }
