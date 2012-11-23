@@ -7,39 +7,46 @@ namespace NavigationRoutes
     {
         readonly string _name;
         readonly string _displayName;
+        readonly string _role;
 
-        public NamedRoute(string name, string url, IRouteHandler routeHandler)
+        public NamedRoute(string name, string url, IRouteHandler routeHandler, string role = null)
             : base(url, routeHandler)
         {
             _name = name;
+            _role = role;
         }
 
         public NamedRoute(string name, string url, RouteValueDictionary defaults, RouteValueDictionary constraints,
-                          IRouteHandler routeHandler)
+                          IRouteHandler routeHandler, string role = null)
             : base(url, defaults, constraints, routeHandler)
         {
             _name = name;
+            _role = role;
         }
 
         public NamedRoute(string name, string url, RouteValueDictionary defaults, RouteValueDictionary constraints,
-                          RouteValueDictionary dataTokens, IRouteHandler routeHandler)
+                          RouteValueDictionary dataTokens, IRouteHandler routeHandler, string role = null)
             : base(url, defaults, constraints, dataTokens, routeHandler)
         {
             _name = name;
+            _role = role;
         }
 
         public NamedRoute(string name, string displayName, string url, RouteValueDictionary defaults, RouteValueDictionary constraints,
-                          RouteValueDictionary dataTokens, IRouteHandler routeHandler)
+                          RouteValueDictionary dataTokens, IRouteHandler routeHandler, string role = null)
             : base(url, defaults, constraints, dataTokens, routeHandler)
         {
             _name = name;
             _displayName = displayName;
+            _role = role;
         }
 
-        public NamedRoute(string name, string displayName, string url, MvcRouteHandler routeHandler) : base(url, routeHandler)
+        public NamedRoute(string name, string displayName, string url, MvcRouteHandler routeHandler, string role = null)
+            : base(url, routeHandler)
         {
             _name = name;
             _displayName = displayName;
+            _role = role;
         }
 
         public string Name
@@ -50,6 +57,11 @@ namespace NavigationRoutes
         public string DisplayName
         {
             get { return _displayName ?? _name; }
+        }
+
+        public string Role
+        {
+            get { return _role; }
         }
     }
 }
