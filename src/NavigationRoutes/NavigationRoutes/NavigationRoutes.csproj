@@ -71,9 +71,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="INavigationRouteFilter.cs" />
     <Compile Include="NamedRoute.cs" />
     <Compile Include="NavigationExtensions.cs" />
     <Compile Include="NavigationRouteConfigurationExtensions.cs" />
+    <Compile Include="NavigationRouteFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

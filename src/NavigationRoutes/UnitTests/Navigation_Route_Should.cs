@@ -36,11 +36,38 @@ namespace UnitTests
 
             routes.MapNavigationRoute<HomeController>("Home", c => c.Index());
             routes.MapNavigationRoute<HomeController>("About", c => c.About());
+            routes.MapNavigationRoute<HomeController>("Logout", c => c.Logout());
 
             routes.Count.ShouldNotEqual(0);
 
             var uh = GetUrlHelper(routes);
             uh.RouteUrl("Navigation-Home-Index").ShouldEqual("/");
+        }
+        [Test]
+        public void Apply_filter_to_the_current_request()
+        {
+            var routes = RouteTable.Routes;
+            var filter = new NullFilter();
+            NavigationRoutes.NavigationRoutes.Filters.Add(filter);
+            routes.MapNavigationRoute<HomeController>("Home", c => c.Index());
+
+            NavigationRoutes.NavigationViewExtensions.Navigation(null);
+
+            filter._wasCalled.ShouldBeTrue();
+        }
+        [Test]
+        public void should_apply_filters()
+        {
+            
+            var filters = new List<INavigationRouteFilter>();
+            filters.Add(new RemoveAuthorizeActions());
+            
+            var routes = new System.Web.Routing.RouteCollection();
+            routes.MapNavigationRoute<HomeController>("Home", c => c.Index());
+            routes.MapNavigationRoute<HomeController>("Logout", c => c.Logout());
+
+            var currentRoutes = NavigationRoutes.NavigationViewExtensions.GetRoutesForCurrentRequest(routes, filters);
+            currentRoutes.Count().ShouldEqual(1);
         }
     }
 }
