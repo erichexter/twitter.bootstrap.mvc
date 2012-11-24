@@ -75,6 +75,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Navigation_Route_Should.cs" />
+    <Compile Include="NullFilter.cs" />
+    <Compile Include="RemoveAuthorizeActions.cs" />
     <Compile Include="RouteTesterBase.cs" />
     <Compile Include="TestDoubles\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

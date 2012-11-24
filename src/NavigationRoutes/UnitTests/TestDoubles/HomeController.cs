@@ -15,6 +15,12 @@ namespace UnitTests
         {
             return View();
         }
+        [Authorize]
+        public ActionResult Logout()
+        {
+            return RedirectToAction("~/");
+        }
+        
     }
 
 }

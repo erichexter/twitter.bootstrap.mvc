@@ -25,13 +25,37 @@ namespace NavigationRoutes
         }
     }
 
+    public static class NavigationRoutes
+    {
+        public static List<INavigationRouteFilter> Filters=new List<INavigationRouteFilter>();
+    }
     public static class NavigationViewExtensions
     {
+        
         public static IHtmlString Navigation(this HtmlHelper helper)
         {
             return new CompositeMvcHtmlString(
-                RouteTable.Routes.OfType<NamedRoute>().Select(
-                    namedRoute => helper.NavigationListItemRouteLink(namedRoute.DisplayName, namedRoute.Name)));
+                GetRoutesForCurrentRequest(RouteTable.Routes,NavigationRoutes.Filters).Select(namedRoute => helper.NavigationListItemRouteLink(namedRoute.DisplayName, namedRoute.Name)));
+        }
+
+        public static IEnumerable<NamedRoute> GetRoutesForCurrentRequest(RouteCollection routes,IEnumerable<INavigationRouteFilter> routeFilters)
+        {
+            var navigationRoutes = routes.OfType<NamedRoute>().ToList();
+            if (routeFilters.Count() > 0)
+            {
+                foreach (var route in navigationRoutes.ToArray())
+                {
+                    foreach (var filter in routeFilters)
+                    {
+                        if (filter.ShouldRemove(route))
+                        {
+                            navigationRoutes.Remove(route);
+                            break;
+                        }
+                    }
+                }
+            }
+            return navigationRoutes;
         }
 
         public static MvcHtmlString NavigationListItemRouteLink(this HtmlHelper html, string linkText, string routeName)
