@@ -20,7 +20,12 @@ namespace UnitTests
         {
             return RedirectToAction("~/");
         }
-        
+
+
+        internal ActionResult ChangePassword()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

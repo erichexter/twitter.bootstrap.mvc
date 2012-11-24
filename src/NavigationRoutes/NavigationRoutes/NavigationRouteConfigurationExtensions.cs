@@ -28,13 +28,24 @@ namespace NavigationRoutes
         }
 
 
-        public static void MapNavigationRoute<T>(this RouteCollection routes, string displayName, Expression<Func<T, ActionResult>> action) where T : IController
+        public static NavigationRouteBuilder MapNavigationRoute<T>(this RouteCollection routes, string displayName, Expression<Func<T, ActionResult>> action) where T : IController
         {
             var newRoute = new NamedRoute("", "", new MvcRouteHandler());
             newRoute.ToDefaultAction(action);
             //newRoute.Constraints = new RouteValueDictionary(new { @namespace=typeof(T).Namespace});
             newRoute.DisplayName = displayName;
             routes.Add(newRoute.Name, newRoute);
+            return new NavigationRouteBuilder(routes, newRoute);
+        }
+
+        public static NavigationRouteBuilder AddChildRoute<T>(this NavigationRouteBuilder builder, string DisplayText, Expression<Func<T, ActionResult>> action) where T : IController
+        {
+            var childRoute = new NamedRoute("", "", new MvcRouteHandler());
+            childRoute.ToDefaultAction<T>(action);
+            childRoute.DisplayName = DisplayText;
+            builder._parent.Children.Add(childRoute);
+            builder._routes.Add(childRoute.Name,childRoute);
+            return builder;
         }
 
         public static NamedRoute ToDefaultAction<T>(this NamedRoute route, Expression<Func<T, ActionResult>> action) where T : IController
@@ -89,5 +100,19 @@ namespace NavigationRoutes
             }
             return actionName.ToLower();
         }
+
+    }
+    public class NavigationRouteBuilder
+    {
+        public NavigationRouteBuilder(RouteCollection routes, NamedRoute parent)
+        {
+           
+            _routes = routes;
+            _parent = parent;
+        }
+
+        public RouteCollection _routes { get; set; }
+
+        public NamedRoute _parent { get; set; }
     }
 }

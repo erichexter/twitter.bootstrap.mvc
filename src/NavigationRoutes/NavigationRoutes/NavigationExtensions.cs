@@ -35,7 +35,7 @@ namespace NavigationRoutes
         public static IHtmlString Navigation(this HtmlHelper helper)
         {
             return new CompositeMvcHtmlString(
-                GetRoutesForCurrentRequest(RouteTable.Routes,NavigationRoutes.Filters).Select(namedRoute => helper.NavigationListItemRouteLink(namedRoute.DisplayName, namedRoute.Name)));
+                GetRoutesForCurrentRequest(RouteTable.Routes,NavigationRoutes.Filters).Select(namedRoute => helper.NavigationListItemRouteLink(namedRoute)));
         }
 
         public static IEnumerable<NamedRoute> GetRoutesForCurrentRequest(RouteCollection routes,IEnumerable<INavigationRouteFilter> routeFilters)
@@ -58,18 +58,21 @@ namespace NavigationRoutes
             return navigationRoutes;
         }
 
-        public static MvcHtmlString NavigationListItemRouteLink(this HtmlHelper html, string linkText, string routeName)
+        public static MvcHtmlString NavigationListItemRouteLink(this HtmlHelper html, NamedRoute route)
         {
             var li = new TagBuilder("li")
                 {
-                    InnerHtml = html.RouteLink(linkText, routeName).ToString()
+                    InnerHtml = html.RouteLink(route.DisplayName, route.Name).ToString()
                 };
-
-            if (CurrentRouteMatchesName(html, routeName))
+            
+            if (CurrentRouteMatchesName(html, route.Name))
             {
                 li.AddCssClass("active");
             }
-
+            if (route.Children.Count() > 0)
+            {
+                //TODO: create a UL of child routes here.
+            }
             return MvcHtmlString.Create(li.ToString(TagRenderMode.Normal));
         }
 
