@@ -69,5 +69,18 @@ namespace UnitTests
             var currentRoutes = NavigationRoutes.NavigationViewExtensions.GetRoutesForCurrentRequest(routes, filters);
             currentRoutes.Count().ShouldEqual(1);
         }
+
+        [Test]
+        public void should_add_namespaces()
+        {
+            var routes = new System.Web.Routing.RouteCollection();
+            routes.MapNavigationRoute("Home-navigation", "Home", "",
+                                        defaults: new { controller = "Home", action = "Index" },
+                                        namespaces: new[] { "UnitTests" });
+            routes.Count().ShouldEqual(1);
+
+            var namespaces = (string[]) ((NamedRoute) routes["Home-navigation"]).DataTokens["Namespaces"];
+            namespaces.ShouldContain("UnitTests");
+        }
     }
 }

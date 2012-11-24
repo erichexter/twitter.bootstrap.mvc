@@ -27,6 +27,24 @@ namespace NavigationRoutes
             routes.Add(name, newRoute);
         }
 
+        public static void MapNavigationRoute(this RouteCollection routes, string name, string displayName, string url,
+                                      object defaults,
+                                      string[] namespaces,
+                                      object constraints = null)
+        {
+            var newRoute = new NamedRoute(name, displayName, url, new MvcRouteHandler())
+            {
+                Defaults = new RouteValueDictionary(defaults),
+                Constraints = new RouteValueDictionary(constraints),
+                DataTokens = new RouteValueDictionary()
+            };
+
+            if (namespaces != null && namespaces.Length > 0)
+                newRoute.DataTokens["Namespaces"] = namespaces;
+
+            routes.Add(name, newRoute);
+        }
+
 
         public static void MapNavigationRoute<T>(this RouteCollection routes, string displayName, Expression<Func<T, ActionResult>> action) where T : IController
         {
