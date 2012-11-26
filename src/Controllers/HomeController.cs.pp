@@ -20,6 +20,11 @@ namespace $rootnamespace$.Controllers
         [HttpPost]
         public ActionResult Create(HomeInputModel model)
         {
+            if (!string.IsNullOrEmpty(Request["cancel"]))
+            {
+                Information("Create was canceled");
+                return RedirectToAction("Index");
+            }
             if (ModelState.IsValid)
             {
                 model.Id = _models.Count==0?1:_models.Select(x => x.Id).Max() + 1;
@@ -54,6 +59,11 @@ namespace $rootnamespace$.Controllers
         [HttpPost]        
         public ActionResult Edit(HomeInputModel model,int id)
         {
+            if (!string.IsNullOrEmpty(Request["cancel"]))
+            {
+                Information("Edit was canceled");
+                return RedirectToAction("Index");
+            }
             if(ModelState.IsValid)
             {
                 _models.Remove(_models.Get(id));
