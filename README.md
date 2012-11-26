@@ -26,3 +26,5 @@ Brought to you by [Eric Hexter](http://lostechies.com/erichexter/)
 The automated build is located here: (http://teamcity.codebetter.com/viewType.html?buildTypeId=bt676&tab=buildTypeStatusDiv) Click the "Login as guest" link in the footer of the page.
 
 The preview releases are on this nuget feed (http://www.myget.org/F/erichexter/)
+
+<iframe src="http://teamcity.codebetter.com/externalStatus.html?buildTypeId=bt676&withCss=true"/>

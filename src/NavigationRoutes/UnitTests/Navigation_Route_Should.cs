@@ -71,6 +71,18 @@ namespace UnitTests
         }
 
         [Test]
+        public void should_contain_child_routes()
+        {
+            var routes = new System.Web.Routing.RouteCollection();
+            routes.MapNavigationRoute<HomeController>("Home", c => c.Index())
+            .AddChildRoute<HomeController>("Logout", c => c.Logout())
+            .AddChildRoute<HomeController>("Foobar", c => c.ChangePassword());
+
+            routes.Count().ShouldEqual(3);
+            ((NamedRoute)routes["Navigation-Home-Index"]).Children.Count().ShouldEqual(2);
+        }
+
+        [Test]
         public void add_namespaces()
         {
             var routes = new System.Web.Routing.RouteCollection();
