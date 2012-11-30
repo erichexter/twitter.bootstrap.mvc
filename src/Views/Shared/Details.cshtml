@@ -1,5 +1,9 @@
 @using BootstrapSupport
 @model Object
+@{
+    Layout = "~/Views/shared/_BootstrapLayout.cshtml";
+}
+
 <fieldset>
     <legend>@Model.GetLabel() <small>Details</small></legend>
     <dl> <!-- use this class on the dl if you want horizontal styling http://twitter.github.com/bootstrap/base-css.html#typography  class="dl-horizontal"-->     
