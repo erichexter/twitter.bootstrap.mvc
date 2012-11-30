@@ -6,7 +6,7 @@ Package Homepage:
 Twitter Bootstrap Homepage:
   http://twitter.github.com/bootstrap/
 
-See the introduction blog post http://lostechies.com/erichexter/2012/11/19/twitter-bootstrap-mvc4-the-template-nuget-package-for-asp-net-mvc4-projects/ 
+See the introduction blog post http://lostechies.com/erichexter/2012/11/20/twitter-bootstrap-mvc4-the-template-nuget-package-for-asp-net-mvc4-projects/
 
 Warning: After installing the package, you may get build errors.
   Compiling transformation: The type or namespace name 'Web' does not exist in the namespace 'Microsoft.VisualStudio' (are you missing an assembly reference?)
