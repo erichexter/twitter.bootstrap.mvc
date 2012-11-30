@@ -1,9 +1,5 @@
 @using BootstrapSupport
 @model Object
-@{
-    Layout = "~/Views/shared/_BootstrapLayout.cshtml";
-}
-
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
@@ -21,7 +17,7 @@
         }
 		<div class="form-actions">
             <button type="submit" class="btn btn-primary">Save changes</button>
-            <button class="btn">Cancel</button>
+            @Html.ActionLink("Cancel",  "Index", null, new {@class = "btn "})
           </div>
     </fieldset>
 }

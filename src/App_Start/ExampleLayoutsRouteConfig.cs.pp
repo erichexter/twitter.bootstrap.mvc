@@ -8,13 +8,10 @@ using NavigationRoutes;
 
 namespace $rootnamespace
 {
-    public class RouteConfig
+    public class ExampleLayoutsRouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.IgnoreRoute("favicon.ico");
-
             routes.MapNavigationRoute("starter", "Starter", "ExampleLayouts/Starter", new {controller = "ExampleLayouts", action = "Starter"});
             routes.MapNavigationRoute("marketing", "Marketing Site", "ExampleLayouts/Marketing", new { controller = "ExampleLayouts", action = "Marketing" });
             routes.MapNavigationRoute("fluid", "Fluid", "ExampleLayouts/Fluid", new { controller = "ExampleLayouts", action = "Fluid" });
@@ -22,12 +19,6 @@ namespace $rootnamespace
             routes.MapNavigationRoute("signin", "Sign In", "ExampleLayouts/SignIn", new { controller = "ExampleLayouts", action = "SignIn" });
             routes.MapNavigationRoute("stickyfooter", "Sticky Footer", "ExampleLayouts/StickyFooter", new { controller = "ExampleLayouts", action = "StickyFooter" });
             routes.MapNavigationRoute("carousel", "Carousel", "ExampleLayouts/Carousel", new { controller = "ExampleLayouts", action = "Carousel" });
-
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
         }
     }
 }
