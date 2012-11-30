@@ -7,7 +7,7 @@
     <description>Routes for creating Menus and Navigation.</description>
     <projectUrl>http://github.com/erichexter/twitter.bootstrap.mvc</projectUrl>
     <dependencies>
-      <dependency id="Mvc3Futures" version="3.0.20105.0" />
+      <dependency id="Mvc4Futures" />
     </dependencies>
   </metadata>
   <files>
