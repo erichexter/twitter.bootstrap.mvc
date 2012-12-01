@@ -1,5 +1,6 @@
 ﻿<#@ template language="C#" HostSpecific="True" #>
 <#@ output extension=".cshtml" #>
+<#@ import namespace="Microsoft.VisualStudio.Web.Mvc.Scaffolding.BuiltIn" #>
 <#@ assembly name="System.ComponentModel.DataAnnotations" #>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="System.Data.Entity" #>
@@ -16,7 +17,6 @@
 MvcTextTemplateHost mvcHost = MvcTemplateHost;
 #>
 @model <#= mvcHost.ViewDataTypeName #>
-@using BootstrapSupport;
 <#
 // The following chained if-statement outputs the file header code and markup for a partial view, a content page, or a regular view.
 if(mvcHost.IsPartialView) {
@@ -59,86 +59,42 @@ if (!String.IsNullOrEmpty(mvcHost.MasterPageFile)) {
     PushIndent("    ");
 }
 #>
-<#
-if (mvcHost.ReferenceScriptLibraries) {
-#>
-<#
-    if (!mvcHost.IsContentPage) {
-#>
-<script src="~/Scripts/jquery-1.6.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
-<#
-    }
-}
-#>
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-
-    <fieldset class="form-horizontal">
-        <legend><#= mvcHost.ViewDataType.Name #></legend>
-
+<fieldset>
+    <legend><#= mvcHost.ViewDataType.Name #></legend>
 <#
 foreach (ModelProperty property in GetModelProperties(mvcHost.ViewDataType)) {
-    if (!property.IsPrimaryKey && !property.IsReadOnly && property.Scaffold) {
+    if (!property.IsPrimaryKey && property.Scaffold) {
 #>
-         @Html.BeginControlGroupFor(model=>model.<#= property.Name #>)
-<#
-        if (property.IsForeignKey) {
-#>
-            @Html.LabelFor(model => model.<#= property.Name #>, "<#= property.AssociationName #>",new {@class="control-label"})
-<#
-        } else {
-#>
-            @Html.LabelFor(model => model.<#= property.Name #>,new {@class="control-label"})
-<#
-        }
-#>
-        
-        <div class="controls">
-<#
-        if (property.IsForeignKey) {
-#>
-            @Html.DropDownList("<#= property.Name #>", String.Empty)
-<#
-        } else {
-#>
-            @Html.EditorFor(model => model.<#= property.Name #>,new {@class="input-xlarge"})
-<#
-        }
-#>
-            @Html.ValidationMessageFor(model => model.<#= property.Name #>,null,new{@class="help-inline"})
-		</div>
-        @Html.EndControlGroup()
 
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.<#= property.ValueExpression #>)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.<#= property.ValueExpression #>)
+		</dd>
+	</dl>
 <#
     }
 }
 #>
-		<div class="form-actions">
-            <button type="submit" class="btn btn-primary">Save changes</button>
-            <button class="btn">Cancel</button>
-          </div>
-    </fieldset>
-}
-
-<div>
+</fieldset>
+<p>
+<#
+string pkName = GetPrimaryKeyName(mvcHost.ViewDataType);
+if (pkName != null) {
+#>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.<#= pkName #> }) |
     @Html.ActionLink("Back to List", "Index")
-</div>
 <#
-if(mvcHost.IsContentPage && mvcHost.ReferenceScriptLibraries) {
+} else {
 #>
-
-@section Scripts {
-    
-}
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
 <#
 }
 #>
-<#
-// The following code closes the asp:Content tag used in the case of a master page and the body and html tags in the case of a regular view page
-#>
+</p>
 <#
 if(!mvcHost.IsPartialView && !mvcHost.IsContentPage) {
     ClearIndent();
