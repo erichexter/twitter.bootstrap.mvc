@@ -36,7 +36,15 @@ namespace $rootnamespace$.Controllers
             return View(new HomeInputModel());
         }
 
-        public ActionResult Delete(int id)
+	    public ActionResult Delete(int id)
+        {
+            var model = _models.Get(id);
+            Attention("Do you really want to delete this?");
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id,FormCollection collection)
         {
             _models.Remove(_models.Get(id));
             Information("Your widget was deleted");
@@ -46,7 +54,8 @@ namespace $rootnamespace$.Controllers
             }
             return RedirectToAction("index");
         }
-        public ActionResult Edit(int id)
+
+		public ActionResult Edit(int id)
         {
             var model = _models.Get(id);
             return View("Create", model);
