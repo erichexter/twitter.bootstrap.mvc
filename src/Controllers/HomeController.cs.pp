@@ -43,8 +43,8 @@ namespace $rootnamespace$.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public ActionResult Delete(int id,FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult ConfirmDelete(int id)
         {
             _models.Remove(_models.Get(id));
             Information("Your widget was deleted");
