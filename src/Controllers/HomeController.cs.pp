@@ -44,7 +44,7 @@ namespace $rootnamespace$.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult ConfirmDelete(int id)
+        public ActionResult DeletePost(int id)
         {
             _models.Remove(_models.Get(id));
             Information("Your widget was deleted");
