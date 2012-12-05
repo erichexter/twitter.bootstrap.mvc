@@ -93,26 +93,27 @@ foreach (ModelProperty property in properties) {
 <#
     }
 }
+#>
+        <td>
+            <div class="btn-group">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    Action
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                        @{
+                            @Html.TryPartial("_actions", item)                            
+                            var routevalues = item.GetIdValue();  
+                            <li>@Html.ActionLink("Edit", "Edit", routevalues)</li>
+                            <li>@Html.ActionLink("Details", "Details", routevalues)</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Delete", "Delete", routevalues)</li>
+                               
+                        }
+                </ul>
+            </div>
 
-string pkName = GetPrimaryKeyName(mvcHost.ViewDataType);
-if (pkName != null) {
-#>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.<#= pkName #> }, new { @class="btn" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.<#= pkName #> }, new { @class="btn" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.<#= pkName #> }, new { @class="btn" })
         </td>
-<#
-} else {
-#>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }, new { @class="btn" }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }, new { @class="btn" }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class="btn" })
-        </td>
-<#
-}
-#>
     </tr>
 }
 </tbody>
