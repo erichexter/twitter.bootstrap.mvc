@@ -15,6 +15,7 @@
 <#
 MvcTextTemplateHost mvcHost = MvcTemplateHost;
 #>
+@using BootstrapSupport
 @model IEnumerable<#= "<" + mvcHost.ViewDataTypeName + ">" #>
 <#
 // The following chained if-statement outputs the file header code and markup for a partial view, a content page, or a regular view.
