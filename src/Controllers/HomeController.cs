@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using $rootnamespace$.Models;
+using BootstrapMvcSample.Models;
 
-namespace $rootnamespace$.Controllers
+namespace BootstrapMvcSample.Controllers
 {
     public class HomeController : BootstrapBaseController
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace $rootnamespace$.Controllers
+namespace BootstrapMvcSample.Controllers
 {
     public class ExampleLayoutsController : Controller
     {

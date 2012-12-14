@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using NavigationRoutes;
 
-namespace $rootnamespace$
+namespace BootstrapMvcSample
 {
     public class ExampleLayoutsRouteConfig
     {

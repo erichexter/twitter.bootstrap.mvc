@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 
-namespace $rootnamespace$
+namespace BootstrapSupport
 {
     public class BootstrapBundleConfig
     {
