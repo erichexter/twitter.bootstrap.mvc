@@ -27,12 +27,29 @@ namespace NavigationRoutes
             routes.Add(name, newRoute);
         }
 
+        public static void MapNavigationRoute(this RouteCollection routes, string name, string displayName, string url,
+                                      object defaults,
+                                      string[] namespaces,
+                                      object constraints = null)
+        {
+            var newRoute = new NamedRoute(name, displayName, url, new MvcRouteHandler())
+            {
+                Defaults = new RouteValueDictionary(defaults),
+                Constraints = new RouteValueDictionary(constraints),
+                DataTokens = new RouteValueDictionary()
+            };
+
+            if (namespaces != null && namespaces.Length > 0)
+                newRoute.DataTokens["Namespaces"] = namespaces;
+
+            routes.Add(name, newRoute);
+        }
+
 
         public static NavigationRouteBuilder MapNavigationRoute<T>(this RouteCollection routes, string displayName, Expression<Func<T, ActionResult>> action) where T : IController
         {
             var newRoute = new NamedRoute("", "", new MvcRouteHandler());
             newRoute.ToDefaultAction(action);
-            //newRoute.Constraints = new RouteValueDictionary(new { @namespace=typeof(T).Namespace});
             newRoute.DisplayName = displayName;
             routes.Add(newRoute.Name, newRoute);
             return new NavigationRouteBuilder(routes, newRoute);
@@ -89,6 +106,11 @@ namespace NavigationRoutes
 
             route.Url= CreateUrl(actionName,controllerName);
             route.Name = "Navigation-" + controllerName + "-" + actionName;
+
+            if(route.DataTokens == null)
+                route.DataTokens = new RouteValueDictionary();
+            route.DataTokens.Add("Namespaces", new string[] {typeof (T).Namespace});
+
             return route;
         }
 

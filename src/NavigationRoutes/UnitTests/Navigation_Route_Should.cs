@@ -81,5 +81,29 @@ namespace UnitTests
             routes.Count().ShouldEqual(3);
             ((NamedRoute)routes["Navigation-Home-Index"]).Children.Count().ShouldEqual(2);
         }
+
+        [Test]
+        public void add_namespaces()
+        {
+            var routes = new System.Web.Routing.RouteCollection();
+            routes.MapNavigationRoute("Home-navigation", "Home", "",
+                                        defaults: new { controller = "Home", action = "Index" },
+                                        namespaces: new[] { "UnitTests" });
+            routes.Count().ShouldEqual(1);
+
+            var namespaces = (string[]) ((NamedRoute) routes["Home-navigation"]).DataTokens["Namespaces"];
+            namespaces.ShouldContain("UnitTests");
+        }
+        [Test]
+        public void add_namespaces_for_controller()
+        {
+            var routes = new System.Web.Routing.RouteCollection();
+
+            routes.MapNavigationRoute<HomeController>("Home", c => c.Index());
+
+            routes.Count().ShouldEqual(1);
+            var namespaces = (string[]) ((NamedRoute) routes["Navigation-Home-Index"]).DataTokens["Namespaces"];
+            namespaces.ShouldContain("UnitTests");
+        }
     }
 }
