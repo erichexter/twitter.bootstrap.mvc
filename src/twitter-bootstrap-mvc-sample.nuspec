@@ -14,5 +14,6 @@
   <files>
     <file src="Controllers\*.*" target="Content\Controllers"></file>
     <file src="Models\*.*" target="Content\Models"></file>
+    <file src="Views\ExampleLayouts\*.*" target="Content\Views\ExampleLayouts"></file>
   </files>
 </package>
