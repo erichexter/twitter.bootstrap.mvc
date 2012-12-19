@@ -156,5 +156,40 @@ namespace BootstrapSupport
             }
             return MvcHtmlString.Empty;
         }
+		
+		// example usage:
+		// <li>@Html.ActionLinkWithGlyphIcon(Url.Action("Index"),
+        //                                   "Back to List",
+        //                                   "icon list")</li>
+		public static MvcHtmlString ActionLinkWithGlyphIcon(this HtmlHelper helper, 
+            string action, 
+            string text, 
+            string glyphs,
+            string tooltip = "",
+            IDictionary<string, object> htmlAttributes = null)
+        {
+            var glyph = new TagBuilder("i");
+            glyph.MergeAttribute("class", glyphs);
+
+            var anchor = new TagBuilder("a");
+            anchor.MergeAttribute("href", action);
+            
+            if(!string.IsNullOrEmpty(tooltip))
+                anchor.MergeAttributes(
+                    new Dictionary<string, object>()
+                        {
+                            { "rel", "tooltip" }, 
+                            { "data-placement", "top" }, 
+                            { "title", tooltip }
+                        }
+                    );
+
+            if(htmlAttributes != null)
+                anchor.MergeAttributes(htmlAttributes, true);
+
+            anchor.InnerHtml = glyph + " " + text;
+
+            return MvcHtmlString.Create(anchor.ToString());
+        }
     }
 }
