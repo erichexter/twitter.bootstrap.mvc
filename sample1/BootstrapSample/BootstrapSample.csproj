@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A97D5264-5A5E-4B65-9113-38C962359562}</ProjectGuid>
+    <ProjectGuid>{2D613836-3EBC-4D5E-9AF0-399106146584}</ProjectGuid>
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BootstrapMvcSample</RootNamespace>
-    <AssemblyName>BootstrapMvcSample</AssemblyName>
+    <RootNamespace>BootstrapSample</RootNamespace>
+    <AssemblyName>BootstrapSample</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -39,13 +39,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime">
-      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Web.Mvc">
-      <HintPath>..\packages\Mvc4Futures.4.0.20710.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -55,13 +49,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Optimization">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -103,6 +90,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
@@ -115,54 +106,11 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Web.Optimization">
-      <HintPath>..\packages\Web.Optimization.0.0.6\lib\net40\Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="WebGrease">
-      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\src\App_Start\BootstrapBundleConfig.cs">
-      <Link>App_Start\BootstrapBundleConfig.cs</Link>
-    </Compile>
-    <Compile Include="..\..\src\App_Start\ExampleLayoutsRouteConfig.cs">
-      <Link>App_Start\ExampleLayoutsRouteConfig.cs</Link>
-    </Compile>
-    <Compile Include="..\..\src\BootstrapSupport\ControlGroupExtensions.cs">
-      <Link>BootstrapSupport\ControlGroupExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\..\src\BootstrapSupport\ViewHelperExtensions.cs">
-      <Link>BootstrapSupport\ViewHelperExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\..\src\Controllers\BootstrapBaseController.cs">
-      <Link>Controllers\BootstrapBaseController.cs</Link>
-    </Compile>
-    <Compile Include="..\..\src\Controllers\ExampleLayoutsController.cs">
-      <Link>Controllers\ExampleLayoutsController.cs</Link>
-    </Compile>
-    <Compile Include="..\..\src\Controllers\HomeController.cs">
-      <Link>Controllers\HomeController.cs</Link>
-    </Compile>
-    <Compile Include="..\..\src\NavigationRoutes\NavigationRoutes\INavigationRouteFilter.cs">
-      <Link>NavigationRoutes\INavigationRouteFilter.cs</Link>
-    </Compile>
-    <Compile Include="..\..\src\NavigationRoutes\NavigationRoutes\NamedRoute.cs">
-      <Link>NavigationRoutes\NamedRoute.cs</Link>
-    </Compile>
-    <Compile Include="..\..\src\NavigationRoutes\NavigationRoutes\NavigationExtensions.cs">
-      <Link>NavigationRoutes\NavigationExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\..\src\NavigationRoutes\NavigationRoutes\NavigationRouteConfigurationExtensions.cs">
-      <Link>NavigationRoutes\NavigationRouteConfigurationExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\..\src\NavigationRoutes\NavigationRoutes\NavigationRouteFilter.cs">
-      <Link>NavigationRoutes\NavigationRouteFilter.cs</Link>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\HomeInputModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -170,7 +118,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
-    <Content Include="scripts\html5shiv.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -182,68 +129,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="CodeTemplates\" />
-    <Folder Include="Views\Home\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\src\Views\ExampleLayouts\Fluid.cshtml">
-      <Link>Views\ExampleLayouts\Fluid.cshtml</Link>
-    </Content>
-    <Content Include="..\..\src\Views\ExampleLayouts\Marketing.cshtml">
-      <Link>Views\ExampleLayouts\Marketing.cshtml</Link>
-    </Content>
-    <Content Include="..\..\src\Views\ExampleLayouts\Narrow.cshtml">
-      <Link>Views\ExampleLayouts\Narrow.cshtml</Link>
-    </Content>
-    <Content Include="..\..\src\Views\ExampleLayouts\SignIn.cshtml">
-      <Link>Views\ExampleLayouts\SignIn.cshtml</Link>
-    </Content>
-    <Content Include="..\..\src\Views\ExampleLayouts\Starter.cshtml">
-      <Link>Views\ExampleLayouts\Starter.cshtml</Link>
-    </Content>
-    <Content Include="..\..\src\Views\ExampleLayouts\TBD.cshtml">
-      <Link>Views\ExampleLayouts\TBD.cshtml</Link>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\src\Views\Shared\Create.cshtml">
-      <Link>Views\Shared\Create.cshtml</Link>
-    </Content>
-    <Content Include="..\..\src\Views\Shared\Details.cshtml">
-      <Link>Views\Shared\Details.cshtml</Link>
-    </Content>
-    <Content Include="..\..\src\Views\Shared\Index.cshtml">
-      <Link>Views\Shared\Index.cshtml</Link>
-    </Content>
-    <Content Include="..\..\src\Views\Shared\_alerts.cshtml">
-      <Link>Views\Shared\_alerts.cshtml</Link>
-    </Content>
-    <Content Include="..\..\src\Views\Shared\_BootstrapLayout.basic.cshtml">
-      <Link>Views\Shared\_BootstrapLayout.basic.cshtml</Link>
-    </Content>
-    <Content Include="..\..\src\Views\Shared\_BootstrapLayout.cshtml">
-      <Link>Views\Shared\_BootstrapLayout.cshtml</Link>
-    </Content>
-    <Content Include="..\..\src\Views\Shared\_BootstrapLayout.cshtml.pp">
-      <Link>Views\Shared\_BootstrapLayout.cshtml.pp</Link>
-    </Content>
-    <Content Include="..\..\src\Views\Shared\_BootstrapLayout.empty.cshtml">
-      <Link>Views\Shared\_BootstrapLayout.empty.cshtml</Link>
-    </Content>
-    <Content Include="..\..\src\Views\Shared\_BootstrapLayout.narrow.cshtml">
-      <Link>Views\Shared\_BootstrapLayout.narrow.cshtml</Link>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\_html5shiv.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\src\Views\_ViewStart.cshtml">
-      <Link>Views\_ViewStart.cshtml</Link>
-    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -261,9 +151,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56580</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51217/</IISUrl>
+          <IISUrl>http://localhost:19350/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
