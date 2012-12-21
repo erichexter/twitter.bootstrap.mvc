@@ -68,6 +68,7 @@ output/**
 
 ## TODO: If you have NuGet Package Restore enabled, uncomment this
 **/packages/ 
+**/output/ 
 
 # Visual C++ cache files
 ipch/
