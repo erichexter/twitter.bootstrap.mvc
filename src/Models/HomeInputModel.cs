@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-namespace $rootnamespace$.Models
+namespace Models
 {
     public class HomeInputModel
     {

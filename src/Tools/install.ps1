@@ -23,7 +23,7 @@ if($globalasax -ne $null) {
 				$editpoint.LineUp(1)
 				$editpoint.EndOfLine()
 				$editpoint.InsertNewLine()
-				$editpoint.Insert("BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
+				$editpoint.Insert("BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
 
 ")						    						}
     }
@@ -34,7 +34,7 @@ if($globalasax -ne $null) {
 }
 
 
-$project.ProjectItems.Item("codetemplates").ProjectItems.Item("addview").projectitems.item("cshtml").projectitems.item("bootstrapform.tt").properties.item("customtool").Value=""
+#$project.ProjectItems.Item("codetemplates").ProjectItems.Item("addview").projectitems.item("cshtml").projectitems.item("bootstrapform.tt").properties.item("customtool").Value=""
 
 
 
