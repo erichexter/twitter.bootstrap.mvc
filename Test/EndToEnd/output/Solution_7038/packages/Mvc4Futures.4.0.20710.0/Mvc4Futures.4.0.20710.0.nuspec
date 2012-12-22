@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Mvc4Futures</id>
+    <version>4.0.20710.0</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://aspnet.codeplex.com/license</licenseUrl>
+    <projectUrl>http://aspnet.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>ASP.NET MVC Futures includes unsupported prototype features for ASP.NET MVC, from the MVC team.</description>
+    <summary>ASP.NET MVC Futures includes unsupported prototype features for ASP.NET MVC, from the MVC team.</summary>
+    <language>en-US</language>
+    <references>
+      <reference file="Microsoft.Web.Mvc.dll" />
+    </references>
+  </metadata>
+</package>

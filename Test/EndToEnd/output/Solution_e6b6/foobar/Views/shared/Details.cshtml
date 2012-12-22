@@ -1,0 +1,20 @@
+@using BootstrapSupport
+@model Object
+<fieldset>
+    <legend>@Model.GetLabel() <small>Details</small></legend>
+    <dl> <!-- use this class on the dl if you want horizontal styling http://twitter.github.com/bootstrap/base-css.html#typography  class="dl-horizontal"-->     
+        @foreach(var property in Model.VisibleProperties())
+        {
+            <dt>
+                @property.GetLabel().ToSeparatedWords()
+            </dt>
+            <dd>
+                @Html.Display(property.Name)                
+            </dd>
+        }
+    </dl>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", Model.GetIdValue()) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

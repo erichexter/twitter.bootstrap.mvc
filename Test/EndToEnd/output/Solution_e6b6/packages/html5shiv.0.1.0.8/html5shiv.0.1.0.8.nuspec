@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>html5shiv</id>
+    <version>0.1.0.8</version>
+    <authors>Alexander Farkas</authors>
+    <owners>Alexander Farkas</owners>
+    <projectUrl>https://github.com/erichexter/html5shiv</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This script is the defacto way to enable use of HTML5 sectioning elements in legacy Internet Explorer</description>
+    <references />
+  </metadata>
+</package>
