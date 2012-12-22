@@ -11,6 +11,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="NavigationRoutes\*.cs" target="Content\NavigationRoutes"/>
+    <file src="NavigationRoutes\NavigationRoutes\*.cs" target="Content\NavigationRoutes"/>
   </files>
 </package>

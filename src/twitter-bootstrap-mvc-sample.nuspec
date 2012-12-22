@@ -12,8 +12,8 @@
     </dependencies> 
   </metadata>
   <files>
-    <file src="Controllers\*.*" target="Content\Controllers"></file>
-    <file src="Models\*.*" target="Content\Models"></file>
-    <file src="Views\ExampleLayouts\*.*" target="Content\Views\ExampleLayouts"></file>
+    <file src="Bootstrap\Controllers\*.*" target="Content\Controllers"></file>
+    <file src="Bootstrap\Models\*.*" target="Content\Models"></file>
+    <file src="Bootstrap\Views\ExampleLayouts\*.*" target="Content\Views\ExampleLayouts"></file>
   </files>
 </package>

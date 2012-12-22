@@ -15,6 +15,6 @@
     </dependencies> 
   </metadata>
   <files>
-    <file src="CodeTemplates\*.*" target="Content\CodeTemplates"></file>
+    <file src="Bootstrap\CodeTemplates\**\*.*" target="Content\CodeTemplates"></file>
   </files>
 </package>
