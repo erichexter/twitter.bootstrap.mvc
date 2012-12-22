@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>navigationroutes.mvc4</id>
+    <version>1.0.71</version>
+    <title>navigationroutes.mvc4</title>
+    <authors>Eric Hexter,  Matt Hinze</authors>
+    <owners>Eric Hexter,  Matt Hinze</owners>
+    <projectUrl>http://github.com/erichexter/twitter.bootstrap.mvc</projectUrl>
+    <iconUrl>https://nugetgallery.blob.core.windows.net/icons/navigationroutes.mvc4.1.0.71.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Routes for creating Menus and Navigation.</description>
+    <summary>Routes for creating Menus and Navigation.</summary>
+    <dependencies>
+      <dependency id="Mvc4Futures" />
+    </dependencies>
+    <references />
+  </metadata>
+</package>
