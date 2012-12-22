@@ -9,6 +9,7 @@ To view a working sample, install the [twitter.bootstrap.mvc4.sample](http://nug
 
 	> Install-Package twitter.bootstrap.mvc4
 	> Install-Package twitter.bootstrap.mvc4.sample
+	> Install-Package twitter.bootstrap.mvc4.templates //for MVC Code Templates..(still a work in progress)
 
 
 
