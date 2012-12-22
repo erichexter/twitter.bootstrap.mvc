@@ -1,5 +1,5 @@
 &{
-    $startdir = resolve-path .
+    push-location
     md output -ErrorAction SilentlyContinue
     $outdir = resolve-path .\output
     $templates = resolve-path .\projecttemplates
@@ -9,12 +9,8 @@
     close-solution
     $p = new-mvcapplication foobar
     install-package Newtonsoft.Json
-
     install-package twitter.bootstrap.mvc4.sample -source $source
-
-    build-project $p
-    
-    "$startdir"
-    set-location ..\..\
-
+    build-project $p    
+    pop-location
 }
+
