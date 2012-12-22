@@ -64,7 +64,7 @@ namespace <#= Model.Namespace #>
         //
         // GET: <#= routePrefix #>Details/5
 
-        public ActionResult Details(<#= primaryKey.ShortTypeName #> id = <#= primaryKey.DefaultValue #>)
+        public ActionResult Details(<#= primaryKey.ShortTypeName #> id)
         {
 <# if(isObjectContext) { #>
             <#= modelName #> <#= modelVariable #> = db.<#= entitySetName #>.Single(<#= lambdaVar #> => <#= lambdaVar #>.<#= primaryKey.Name #> == id);
@@ -132,7 +132,7 @@ namespace <#= Model.Namespace #>
 <# foreach (var property in Model.RelatedProperties.Values) { #>
             ViewBag.<#= property.ForeignKeyPropertyName #> = new SelectList(db.<#= property.EntitySetName #>, "<#= property.PrimaryKey #>", "<#= property.DisplayPropertyName #>", <#= modelVariable #>.<#= property.ForeignKeyPropertyName #>);
 <# } #>
-            return View(<#= modelVariable #>);
+            return View("Create", <#= modelVariable #>);
         }
 
         //
@@ -155,31 +155,13 @@ namespace <#= Model.Namespace #>
 <# foreach (var property in Model.RelatedProperties.Values) { #>
             ViewBag.<#= property.ForeignKeyPropertyName #> = new SelectList(db.<#= property.EntitySetName #>, "<#= property.PrimaryKey #>", "<#= property.DisplayPropertyName #>", <#= modelVariable #>.<#= property.ForeignKeyPropertyName #>);
 <# } #>
-            return View(<#= modelVariable #>);
+            return View("Create", <#= modelVariable #>);
         }
 
         //
         // GET: <#= routePrefix #>Delete/5
 
-        public ActionResult Delete(<#= primaryKey.ShortTypeName #> id = <#= primaryKey.DefaultValue #>)
-        {
-<# if(isObjectContext) { #>
-            <#= modelName #> <#= modelVariable #> = db.<#= entitySetName #>.Single(<#= lambdaVar #> => <#= lambdaVar #>.<#= primaryKey.Name #> == id);
-<# } else { #>
-            <#= modelName #> <#= modelVariable #> = db.<#= entitySetName #>.Find(id);
-<# } #>
-            if (<#= modelVariable #> == null)
-            {
-                return HttpNotFound();
-            }
-            return View(<#= modelVariable #>);
-        }
-
-        //
-        // POST: <#= routePrefix #>Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(<#= primaryKey.ShortTypeName #> id)
+        public ActionResult Delete(<#= primaryKey.ShortTypeName #> id)
         {
 <# if(isObjectContext) { #>
             <#= modelName #> <#= modelVariable #> = db.<#= entitySetName #>.Single(<#= lambdaVar #> => <#= lambdaVar #>.<#= primaryKey.Name #> == id);
