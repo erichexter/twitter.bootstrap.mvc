@@ -29,6 +29,6 @@ The automated build is located here: (http://teamcity.codebetter.com/viewType.ht
 The preview releases are on this nuget feed (http://www.myget.org/F/erichexter/)
 
 
-<a href="http://teamcity/viewType.html?buildTypeId=bt676&guest=1">
-    <img src="http://teamcity/app/rest/builds/buildType:(id:bt676)/statusIcon"/>
+<a href="http://teamcity.codebetter.com/viewType.html?buildTypeId=bt676&guest=1">
+    <img src="http://teamcity.codebetter.com/app/rest/builds/buildType:(id:bt676)/statusIcon"/>
 </a>
