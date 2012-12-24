@@ -27,10 +27,8 @@ To view a working sample, install the [twitter.bootstrap.mvc4.sample](http://nug
 
 *Preview Releases:* The preview releases are on this nuget feed (http://www.myget.org/F/erichexter/)
 
-*Build Status:* <a href="http://teamcity.codebetter.com/viewType.html?buildTypeId=bt676&guest=1">
-    <img src="http://teamcity.codebetter.com/app/rest/builds/buildType:(id:bt676)/statusIcon"/>
-</a> The automated build is located here: (http://teamcity.codebetter.com/viewType.html?buildTypeId=bt676&tab=buildTypeStatusDiv) Click the "Login as guest" link in the footer of the page.
-
+*Build Status:* 
+<a href="http://teamcity.codebetter.com/viewType.html?buildTypeId=bt676&guest=1"><img src="http://teamcity.codebetter.com/app/rest/builds/buildType:(id:bt676)/statusIcon"/></a> 
 
 
 Brought to you by [Eric Hexter](http://lostechies.com/erichexter/)
