@@ -1,4 +1,5 @@
-twitter.bootstrap.mvc <a href="http://teamcity.codebetter.com/viewType.html?buildTypeId=bt676&guest=1">
+twitter.bootstrap.mvc 
+<a href="http://teamcity.codebetter.com/viewType.html?buildTypeId=bt676&guest=1">
     <img src="http://teamcity.codebetter.com/app/rest/builds/buildType:(id:bt676)/statusIcon"/>
 </a>
 ===================================================
