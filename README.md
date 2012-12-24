@@ -26,9 +26,10 @@ To view a working sample, install the [twitter.bootstrap.mvc4.sample](http://nug
 	> Install-Package twitter.bootstrap.mvc4.sample
 	> Install-Package twitter.bootstrap.mvc4.templates //for MVC Code Templates..(still a work in progress)
 
-** Preview Releases: ** The preview releases are on this nuget feed (http://www.myget.org/F/erichexter/)
+###Preview Releases
+**Preview Releases:** The preview releases are on this nuget feed (http://www.myget.org/F/erichexter/)
 
-** Build Status: ** 
+**Build Status:** 
 <a href="http://teamcity.codebetter.com/viewType.html?buildTypeId=bt676&guest=1"><img src="http://teamcity.codebetter.com/app/rest/builds/buildType:(id:bt676)/statusIcon"/></a> 
 
 
