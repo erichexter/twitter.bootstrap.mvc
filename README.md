@@ -1,9 +1,8 @@
 twitter.bootstrap.mvc 
+===================================================
 <a href="http://teamcity.codebetter.com/viewType.html?buildTypeId=bt676&guest=1">
     <img src="http://teamcity.codebetter.com/app/rest/builds/buildType:(id:bt676)/statusIcon"/>
 </a>
-===================================================
-
 This has the bootstrap layout and supporting files to quickly add [Twitter Bootstrap](http://twitter.github.com/bootstrap/) to an ASP.Net MVC 4 application. <br />
 
 See the overview [blog post](http://lostechies.com/erichexter/2012/11/20/twitter-bootstrap-mvc4-the-template-nuget-package-for-asp-net-mvc4-projects/) for screen shots and features.
