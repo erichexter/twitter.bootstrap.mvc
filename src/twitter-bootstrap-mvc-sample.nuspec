@@ -9,6 +9,7 @@
     <projectUrl>https://github.com/erichexter/twitter.bootstrap.mvc</projectUrl>
 	  <dependencies>
         <dependency id="twitter.bootstrap.mvc4" />
+        <dependency id="twitter.bootstrap.mvc4.htmlhelpers" />
     </dependencies> 
   </metadata>
   <files>
