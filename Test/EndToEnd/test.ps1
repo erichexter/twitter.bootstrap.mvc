@@ -12,5 +12,6 @@
     install-package twitter.bootstrap.mvc4.sample -source $source
     build-project $p    
     pop-location
+	$dte.ExecuteCommand("debug.start")
 }
 

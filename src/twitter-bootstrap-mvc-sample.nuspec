@@ -12,7 +12,8 @@
     </dependencies> 
   </metadata>
   <files>
-    <file src="Bootstrap\Controllers\*.*" target="Content\Controllers"></file>
+    <file src="Bootstrap\Controllers\Home*.cs" target="Content\Controllers"></file>
+    <file src="Bootstrap\Controllers\Example*.cs" target="Content\Controllers"></file>
     <file src="Bootstrap\Models\*.*" target="Content\Models"></file>
     <file src="Bootstrap\Views\ExampleLayouts\*.*" target="Content\Views\ExampleLayouts"></file>
   </files>
