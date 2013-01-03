@@ -29,5 +29,6 @@
     <file src="Bootstrap\Views\_ViewStart.cshtml" target="Content\Views"></file>
     <file src="Bootstrap\Scripts\*.*" target="Content\Scripts"></file>
     <file src="Bootstrap\Controllers\BootstrapBaseController.*" target="Content\Controllers"></file>
+    <file src="Bootstrap\Content\*.css" target="Content\Content"></file>
   </files>
 </package>
