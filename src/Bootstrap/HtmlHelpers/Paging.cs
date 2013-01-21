@@ -2,6 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
+
+/*
+<!-- Usage in razor (note @model): -->
+@using BootstrapSupport
+@model IPagedList
+
+@Html.Pager(Model.PageIndex,
+            Model.TotalPages,
+            x => Url.Action("Index", new {page = x}),
+            " pagination-right")
+
+// Index action on the HomeController from the sample project:
+public ActionResult Index(int page = 1)
+{
+    var pageSize = 3;
+    var homeInputModels = _models;
+    return View(homeInputModels.ToPagedList(page, pageSize));
+}
+*/
 
 namespace BootstrapSupport.HtmlHelpers
 {
@@ -100,6 +120,21 @@ namespace BootstrapSupport.HtmlHelpers
 
     public static class PagingExtensions
     {
+        public static IPagedList<T> ToPagedList<T>(this IEnumerable<T> query, int page, int pageSize)
+        {
+            return new PagedList<T>(query, page - 1, pageSize);
+        }
+
+        public static IEnumerable<T> GetPage<T>(this IEnumerable<T> source, int pageIndex, int pageSize)
+        {
+            return source.Skip(pageIndex*pageSize).Take(pageSize);
+        }
+        
+        // You can create your own paging extension that delegates to your
+        // persistence layer such as NHibernate or Entity Framework.
+        // This is an example how an `IPagedList<T>` can be created from 
+        // an `IRavenQueryable<T>`:        
+        /*
         public static IPagedList<T> ToPagedList<T>(this IRavenQueryable<T> query, int page, int pageSize)
         {
             RavenQueryStatistics stats;
@@ -116,15 +151,6 @@ namespace BootstrapSupport.HtmlHelpers
                         );
             return list;
         }
-
-        public static IPagedList<T> ToPagedList<T>(this IEnumerable<T> query, int page, int pageSize)
-        {
-            return new PagedList<T>(query, page - 1, pageSize);
-        }
-
-        public static IEnumerable<T> GetPage<T>(this IEnumerable<T> source, int pageIndex, int pageSize)
-        {
-            return source.Skip(pageIndex*pageSize).Take(pageSize);
-        }
+        */
     }   
 }
