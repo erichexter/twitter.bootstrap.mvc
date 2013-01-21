@@ -23,9 +23,9 @@ Things we are working on:
 ##Install
 To view a working sample, install the [twitter.bootstrap.mvc4.sample](http://nuget.org/packages/twitter.bootstrap.mvc4.sample).
 
-	> Install-Package twitter.bootstrap.mvc4
-	> Install-Package twitter.bootstrap.mvc4.sample
-	> Install-Package twitter.bootstrap.mvc4.templates //for MVC Code Templates..(still a work in progress)
+    > Install-Package twitter.bootstrap.mvc4
+    > Install-Package twitter.bootstrap.mvc4.sample
+    > Install-Package twitter.bootstrap.mvc4.templates //for MVC Code Templates..(still a work in progress)
 
 ###Preview Releases
 **Preview Releases:** The preview releases are on this nuget feed (http://www.myget.org/F/erichexter/)
@@ -33,5 +33,13 @@ To view a working sample, install the [twitter.bootstrap.mvc4.sample](http://nug
 **Build Status:** 
 <a href="http://teamcity.codebetter.com/viewType.html?buildTypeId=bt676&guest=1"><img src="http://teamcity.codebetter.com/app/rest/builds/buildType:(id:bt676)/statusIcon"/></a> 
 
+##Contribute
+
+Place your source code in the `src\Bootstrap` directory, or make your modifications.
+Run the `build.ps1` from the Package Manager Console to create the packages locally. 
+
+From a separate VS instance do an `install-package` for the local package your interested in.
+Or, to start a fresh MCV project with all `twitter.bootstrap.mvc4.*` installed,
+run `Test\EndToEnd\test.ps1`. 
 
 Brought to you by [Eric Hexter](http://lostechies.com/erichexter/)
