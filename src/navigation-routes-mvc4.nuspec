@@ -5,6 +5,7 @@
     <version>1.0.0</version>
     <authors>Eric Hexter, Matt Hinze</authors>
     <description>Routes for creating Menus and Navigation.</description>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <projectUrl>http://github.com/erichexter/twitter.bootstrap.mvc</projectUrl>
     <dependencies>
       <dependency id="Mvc4Futures" />

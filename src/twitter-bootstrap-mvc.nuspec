@@ -8,6 +8,7 @@
     <description>This has the bootstrap layout and supporting files to quickly add Twitter 
     Bootstrap to an MVC 4 application. Install the twitter.bootstrap.mvc4.sample to see how
     to use the auto scaffolding feature.</description>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <projectUrl>https://github.com/erichexter/twitter.bootstrap.mvc</projectUrl>
     <releaseNotes>https://github.com/erichexter/twitter.bootstrap.mvc/commits/master</releaseNotes>
     <dependencies>
