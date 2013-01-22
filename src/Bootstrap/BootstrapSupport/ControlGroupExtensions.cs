@@ -15,7 +15,7 @@ namespace BootstrapSupport
         }
 
         public void Dispose(){
-            _html.EndControlGroup();
+            _html.ViewContext.Writer.Write(_html.EndControlGroup());
         }
     }
 
