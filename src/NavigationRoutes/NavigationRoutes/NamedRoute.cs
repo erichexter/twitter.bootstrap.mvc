@@ -55,7 +55,19 @@ namespace NavigationRoutes
             get { return _displayName ?? _name; }
             set { _displayName = value; }
         }
+
         public List<NamedRoute> Children { get { return _childRoutes; } }
         public bool IsChild { get; set; }
+
+        public AreaRegistrationContext Context 
+        {
+            set 
+            {
+                if (value != null) {
+                    this.DataTokens = this.DataTokens ?? new RouteValueDictionary();
+                    this.DataTokens.Add("area", value.AreaName);
+                }
+            }
+        }
     }
 }
