@@ -31,7 +31,29 @@ namespace NavigationRoutes
     }
     public static class NavigationViewExtensions
     {
+                public static IHtmlString Breadcrumbs(this HtmlHelper helper)
+        {
+            var namedRoute = helper.ViewContext.RouteData.Route as NamedRoute;
+            if (namedRoute != null)
+            {
+                var breadcrumbs = new TagBuilder("ul");
+                breadcrumbs.AddCssClass("breadcrumb");
+                breadcrumbs.InnerHtml = BuildBreadcrumbTrail(namedRoute, helper).ToString();
+                return new HtmlString(breadcrumbs.ToString(TagRenderMode.Normal));
+            }
+            return new HtmlString(String.Empty);
+        }
         
+        private static IHtmlString BuildBreadcrumbTrail(NamedRoute namedRoute, HtmlHelper helper)
+        {
+            var li = new TagBuilder("li");
+            var routeLink = helper.RouteLink(namedRoute.DisplayName, namedRoute.Name);
+            li.InnerHtml = string.Format("{0}<span class=\"divider\"> / </span>", routeLink);
+            var breadcrumbTrailPart = new HtmlString(li.ToString(TagRenderMode.Normal));
+            if (namedRoute.Parent == null) return breadcrumbTrailPart;
+            return new HtmlString(string.Format("{0}{1}", BuildBreadcrumbTrail(namedRoute.Parent, helper), breadcrumbTrailPart));
+        }
+
         public static IHtmlString Navigation(this HtmlHelper helper)
         {
             return new CompositeMvcHtmlString(

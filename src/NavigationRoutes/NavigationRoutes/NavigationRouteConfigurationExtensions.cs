@@ -62,6 +62,7 @@ namespace NavigationRoutes
             childRoute.ToDefaultAction<T>(action);
             childRoute.DisplayName = DisplayText;
             childRoute.IsChild = true;
+            childRoute.Parent = builder._parent;
             builder._parent.Children.Add(childRoute);
             builder._routes.Add(childRoute.Name,childRoute);
             return builder;

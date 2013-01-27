@@ -31,6 +31,9 @@
             </div>
         </div>        
         <div class="container">
+            @Html.Breadcrumbs()
+        </div>
+        <div class="container">
             @Html.Partial("_alerts")
             @Html.Partial("_validationSummary")
             @RenderBody()   
