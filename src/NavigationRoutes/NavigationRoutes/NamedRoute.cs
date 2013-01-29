@@ -9,6 +9,7 @@ namespace NavigationRoutes
          string _name;
          string _displayName;
          List<NamedRoute> _childRoutes = new List<NamedRoute>();
+         NamedRoute _parent;
 
         public NamedRoute(string name, string url, IRouteHandler routeHandler)
             : base(url, routeHandler)
@@ -54,6 +55,12 @@ namespace NavigationRoutes
         {
             get { return _displayName ?? _name; }
             set { _displayName = value; }
+        }
+
+        public NamedRoute Parent
+        {
+            get { return _parent; }
+            set { _parent = value; }
         }
         public List<NamedRoute> Children { get { return _childRoutes; } }
         public bool IsChild { get; set; }
