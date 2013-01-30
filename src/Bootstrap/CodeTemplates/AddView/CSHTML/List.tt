@@ -37,7 +37,7 @@ if (!String.IsNullOrEmpty(mvcHost.MasterPageFile)) {
 #>
 }
 
-<h2><#= mvcHost.ViewName#></h2>
+<h4><@Model.GetLabel() <small>Listing</h4>
 
 <#
 } else {
@@ -59,10 +59,9 @@ if (!String.IsNullOrEmpty(mvcHost.MasterPageFile)) {
     PushIndent("    ");
 }
 #>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+
+<table class="table table-striped">
+    <caption></caption>
 	<thead>
     <tr>
 <#
@@ -80,7 +79,6 @@ foreach (ModelProperty property in properties) {
         <th></th>
     </tr>
 	</thead>
-	<tbody>
 @foreach (var item in Model) {
     <tr>
 <#
@@ -116,8 +114,11 @@ foreach (ModelProperty property in properties) {
         </td>
     </tr>
 }
-</tbody>
 </table>
+<p>
+    @Html.ActionLink("Create New", "Create", null, new {@class = "btn"})
+</p>
+
 <#
 // The following code closes the asp:Content tag used in the case of a master page and the body and html tags in the case of a regular view page
 #>
