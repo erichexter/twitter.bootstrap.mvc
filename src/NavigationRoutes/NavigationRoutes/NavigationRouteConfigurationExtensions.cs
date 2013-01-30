@@ -116,6 +116,10 @@ namespace NavigationRoutes
             if(route.DataTokens == null)
                 route.DataTokens = new RouteValueDictionary();
             route.DataTokens.Add("Namespaces", new string[] {typeof (T).Namespace});
+            if (!string.IsNullOrEmpty(areaName))
+            {
+                route.DataTokens.Add("area", areaName.ToLower());
+            }
 
             return route;
         }

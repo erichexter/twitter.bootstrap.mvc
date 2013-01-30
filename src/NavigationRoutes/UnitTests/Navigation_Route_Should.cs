@@ -27,6 +27,9 @@ namespace UnitTests
             var uh = GetUrlHelper(routes);
 
             uh.RouteUrl("Navigation-Admin-Home-About").ShouldEqual("/admin/about");
+            var r = (Route)routes["Navigation-Admin-Home-About"];
+            r.DataTokens["area"].ToString().ShouldEqual("admin");
+            
             uh.RouteUrl("Navigation-AdMin-Home-Index").ShouldEqual("/admin");
         }
         [Test]
