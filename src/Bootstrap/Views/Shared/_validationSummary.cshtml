@@ -1,0 +1,7 @@
+@if (ViewData.ModelState.Any(x => x.Value.Errors.Any())) 
+{ 
+   <div class="alert alert-error"> 
+      <a class="close" data-dismiss="alert">&times;</a> 
+      @Html.ValidationSummary(true)
+   </div>
+}

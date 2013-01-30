@@ -6,13 +6,17 @@
     <version>1.0.0</version>
     <authors>Eric Hexter, Matt Hinze</authors>
     <description>This is a sample for the bootstrap layout and supporting files to quickly add Twitter Bootstrap to an MVC 4 application</description>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <projectUrl>https://github.com/erichexter/twitter.bootstrap.mvc</projectUrl>
 	  <dependencies>
         <dependency id="twitter.bootstrap.mvc4" />
+        <dependency id="twitter.bootstrap.mvc4.htmlhelpers" />
     </dependencies> 
   </metadata>
   <files>
-    <file src="Controllers\*.*" target="Content\Controllers"></file>
-    <file src="Models\*.*" target="Content\Models"></file>
+    <file src="Bootstrap\Controllers\Home*.cs" target="Content\Controllers"></file>
+    <file src="Bootstrap\Controllers\Example*.cs" target="Content\Controllers"></file>
+    <file src="Bootstrap\Models\*.*" target="Content\Models"></file>
+    <file src="Bootstrap\Views\ExampleLayouts\*.*" target="Content\Views\ExampleLayouts"></file>
   </files>
 </package>

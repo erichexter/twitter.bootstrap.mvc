@@ -15,6 +15,21 @@ namespace UnitTests
     public class Navigation_Route_Should:RouteTesterBase
     {
         [Test]
+        public void Map_a_route_to_a_url_using_an_area()
+        {
+            var routes = new System.Web.Routing.RouteCollection();
+
+            routes.MapNavigationRoute<HomeController>("Home", c => c.Index(),"Admin");
+            routes.MapNavigationRoute<HomeController>("About", c => c.About(),"AdMin");
+
+            routes.Count.ShouldNotEqual(0);
+
+            var uh = GetUrlHelper(routes);
+
+            uh.RouteUrl("Navigation-Admin-Home-About").ShouldEqual("/admin/about");
+            uh.RouteUrl("Navigation-AdMin-Home-Index").ShouldEqual("/admin");
+        }
+        [Test]
         public void Map_a_route_to_a_url_matching_the_action_name()
         {
             var routes = new System.Web.Routing.RouteCollection();
@@ -26,7 +41,8 @@ namespace UnitTests
 
             var uh = GetUrlHelper(routes);
 
-            uh.RouteUrl("Navigation-Home-About").ShouldEqual("/about"); 
+            uh.RouteUrl("Navigation-Home-About").ShouldEqual("/about");
+            uh.RouteUrl("Navigation-Home-Index").ShouldEqual("/"); 
         }
 
         [Test]
@@ -80,6 +96,30 @@ namespace UnitTests
 
             routes.Count().ShouldEqual(3);
             ((NamedRoute)routes["Navigation-Home-Index"]).Children.Count().ShouldEqual(2);
+        }
+
+        [Test]
+        public void add_namespaces()
+        {
+            var routes = new System.Web.Routing.RouteCollection();
+            routes.MapNavigationRoute("Home-navigation", "Home", "",
+                                        defaults: new { controller = "Home", action = "Index" },
+                                        namespaces: new[] { "UnitTests" });
+            routes.Count().ShouldEqual(1);
+
+            var namespaces = (string[]) ((NamedRoute) routes["Home-navigation"]).DataTokens["Namespaces"];
+            namespaces.ShouldContain("UnitTests");
+        }
+        [Test]
+        public void add_namespaces_for_controller()
+        {
+            var routes = new System.Web.Routing.RouteCollection();
+
+            routes.MapNavigationRoute<HomeController>("Home", c => c.Index());
+
+            routes.Count().ShouldEqual(1);
+            var namespaces = (string[]) ((NamedRoute) routes["Navigation-Home-Index"]).DataTokens["Namespaces"];
+            namespaces.ShouldContain("UnitTests");
         }
     }
 }

@@ -1,3 +1,5 @@
+Test/EndToEnd/output
+
 
 #################
 ## Eclipse
@@ -67,7 +69,8 @@ output/**
 **/*.dotCover
 
 ## TODO: If you have NuGet Package Restore enabled, uncomment this
-#**/packages/ 
+**/packages/ 
+**/output/ 
 
 # Visual C++ cache files
 ipch/

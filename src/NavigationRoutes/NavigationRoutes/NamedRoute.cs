@@ -56,5 +56,6 @@ namespace NavigationRoutes
             set { _displayName = value; }
         }
         public List<NamedRoute> Children { get { return _childRoutes; } }
+        public bool IsChild { get; set; }
     }
 }

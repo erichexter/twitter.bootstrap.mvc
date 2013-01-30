@@ -40,7 +40,7 @@ namespace NavigationRoutes
 
         public static IEnumerable<NamedRoute> GetRoutesForCurrentRequest(RouteCollection routes,IEnumerable<INavigationRouteFilter> routeFilters)
         {
-            var navigationRoutes = routes.OfType<NamedRoute>().ToList();
+            var navigationRoutes = routes.OfType<NamedRoute>().Where(r=>r.IsChild==false).ToList();
             if (routeFilters.Count() > 0)
             {
                 foreach (var route in navigationRoutes.ToArray())
@@ -72,6 +72,21 @@ namespace NavigationRoutes
             if (route.Children.Count() > 0)
             {
                 //TODO: create a UL of child routes here.
+                li.AddCssClass("dropdown");
+                li.InnerHtml = "<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">" + route.DisplayName +"<b class=\"caret\"></b></a>";
+                var ul = new TagBuilder("ul");
+                ul.AddCssClass("dropdown-menu");
+                
+                foreach (var child in route.Children)
+                {
+                    var childLi = new TagBuilder("li");
+                    childLi.InnerHtml = html.RouteLink(child.DisplayName, child.Name).ToString();
+                    ul.InnerHtml += childLi.ToString();
+                }
+                //that would mean we need to make some quick
+                
+                li.InnerHtml = "<a href='#' class='dropdown-toggle' data-toggle='dropdown'>"+route.DisplayName + " <b class='caret'></b></a>" + ul.ToString();
+                
             }
             return MvcHtmlString.Create(li.ToString(TagRenderMode.Normal));
         }

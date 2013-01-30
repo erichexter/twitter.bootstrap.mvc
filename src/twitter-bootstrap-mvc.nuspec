@@ -8,6 +8,7 @@
     <description>This has the bootstrap layout and supporting files to quickly add Twitter 
     Bootstrap to an MVC 4 application. Install the twitter.bootstrap.mvc4.sample to see how
     to use the auto scaffolding feature.</description>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <projectUrl>https://github.com/erichexter/twitter.bootstrap.mvc</projectUrl>
     <releaseNotes>https://github.com/erichexter/twitter.bootstrap.mvc/commits/master</releaseNotes>
     <dependencies>
@@ -16,19 +17,20 @@
       	<dependency id="navigationroutes.mvc4" />
 	      <dependency id="microsoft.aspnet.web.optimization" version="1.0.0"/>
       	<dependency id="jquery" />
+      	<dependency id="jquery.migrate" />
       	<dependency id="Microsoft.jQuery.Unobtrusive.Ajax" />
       	<dependency id="Microsoft.jQuery.Unobtrusive.Validation" />
     </dependencies> 
   </metadata>
   <files>
-    <file src="readme.txt" target="readme.txt"></file>
-    <file src="CodeTemplates\**\*.*" target="Content\CodeTemplates"></file>
-    <file src="tools\*.*" target="tools"></file>
-    <file src="App_Start\*.*" target="Content\App_Start"></file>
-    <file src="BootstrapSupport\*.*" target="Content\BootstrapSupport"></file>
-    <file src="Views\Shared\*.*" target="Content\Views\Shared"></file>
-    <file src="Views\_ViewStart.cshtml" target="Content\Views"></file>
-    <file src="Scripts\*.*" target="Content\Scripts"></file>
-    <file src="Controllers\BootstrapBaseController.*" target="Content\Controllers"></file>
+    <file src="Bootstrap\readme.txt" target="readme.txt"></file>
+    <file src="Bootstrap\tools\*.*" target="tools"></file>
+    <file src="Bootstrap\App_Start\*.*" target="Content\App_Start"></file>
+    <file src="Bootstrap\BootstrapSupport\*.*" target="Content\BootstrapSupport"></file>
+    <file src="Bootstrap\Views\Shared\*.*" target="Content\Views\Shared"></file>
+    <file src="Bootstrap\Views\_ViewStart.cshtml" target="Content\Views"></file>
+    <file src="Bootstrap\Scripts\*.*" target="Content\Scripts"></file>
+    <file src="Bootstrap\Controllers\BootstrapBaseController.*" target="Content\Controllers"></file>
+    <file src="Bootstrap\Content\*.css" target="Content\Content"></file>
   </files>
 </package>
