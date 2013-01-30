@@ -58,11 +58,11 @@ namespace BootstrapSupport
 
         public static string IdentifierPropertyName(this Type type)
         {
-            if (type.GetProperties().Any(info => info.PropertyType.AttributeExists<System.ComponentModel.DataAnnotations.KeyAttribute>()))
+            if (type.GetProperties().Any(info => info.AttributeExists<System.ComponentModel.DataAnnotations.KeyAttribute>()))
             {
                 return
                     type.GetProperties().First(
-                        info => info.PropertyType.AttributeExists<System.ComponentModel.DataAnnotations.KeyAttribute>())
+                        info => info.AttributeExists<System.ComponentModel.DataAnnotations.KeyAttribute>())
                         .Name;
             }
             else if (type.GetProperties().Any(p => p.Name.Equals("id", StringComparison.CurrentCultureIgnoreCase)))
@@ -70,6 +70,12 @@ namespace BootstrapSupport
                 return
                     type.GetProperties().First(
                         p => p.Name.Equals("id", StringComparison.CurrentCultureIgnoreCase)).Name;
+            }
+            else if (type.GetProperties().Any(p => p.Name.Equals(type.Name + "id", StringComparison.CurrentCultureIgnoreCase)))
+            {
+                return
+                    type.GetProperties().First(
+                        p => p.Name.Equals(type.Name + "id", StringComparison.CurrentCultureIgnoreCase)).Name;
             }
             return "";
         }
