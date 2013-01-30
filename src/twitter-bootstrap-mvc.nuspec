@@ -17,6 +17,7 @@
       	<dependency id="navigationroutes.mvc4" />
 	      <dependency id="microsoft.aspnet.web.optimization" version="1.0.0"/>
       	<dependency id="jquery" />
+      	<dependency id="jquery.migrate" />
       	<dependency id="Microsoft.jQuery.Unobtrusive.Ajax" />
       	<dependency id="Microsoft.jQuery.Unobtrusive.Validation" />
     </dependencies> 
