@@ -111,7 +111,7 @@ namespace NavigationRoutes
             if(areaName=="")
                 route.Name = "Navigation-" + controllerName + "-" + actionName;
             else
-                route.Name = "Navigation-" + areaName + "-" + controllerName + "-" + actionName;
+                route.Name = "Navigation-" + areaName + "-"  + controllerName + "-" + actionName;
 
             if(route.DataTokens == null)
                 route.DataTokens = new RouteValueDictionary();
