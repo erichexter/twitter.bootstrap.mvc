@@ -36,7 +36,7 @@ namespace <#= Model.Namespace #>
     var lambdaVar = modelVariable[0];
     var isObjectContext = typeof(ObjectContext).IsAssignableFrom(Model.ContextType);
 #>
-    public class <#= Model.ControllerName #> : BootstrapBaseController
+    public class <#= Model.ControllerName #> : BootstrapMvcSample.Controllers.BootstrapBaseController
     {
         private <#= Model.ContextType.Name #> db = new <#= Model.ContextType.Name #>();
 
