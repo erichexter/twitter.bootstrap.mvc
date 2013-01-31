@@ -21,7 +21,7 @@ Things we are working on:
 
 
 ##Install
-To view a working sample, install the [twitter.bootstrap.mvc4.sample](http://nuget.org/packages/twitter.bootstrap.mvc4.sample).
+To view a working sample, install the [twitter.bootstrap.mvc4.sample](http://nuget.org/packages/twitter.bootstrap.mvc4.sample) in to a MVC4 Empty (template) project.
 
     > Install-Package twitter.bootstrap.mvc4
     > Install-Package twitter.bootstrap.mvc4.sample
