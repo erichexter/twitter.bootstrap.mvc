@@ -57,5 +57,6 @@ namespace NavigationRoutes
         }
         public List<NamedRoute> Children { get { return _childRoutes; } }
         public bool IsChild { get; set; }
+        public bool ShouldBreakAfter { get; set; }    
     }
 }
