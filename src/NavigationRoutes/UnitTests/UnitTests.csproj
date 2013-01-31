@@ -74,12 +74,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Navigation_Extensions_Should.cs" />
     <Compile Include="Navigation_Route_Should.cs" />
     <Compile Include="NullFilter.cs" />
     <Compile Include="RemoveAuthorizeActions.cs" />
     <Compile Include="RouteTesterBase.cs" />
     <Compile Include="TestDoubles\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDoubles\TestHttpContext.cs" />
+    <Compile Include="TestDoubles\TestHttpRequest.cs" />
+    <Compile Include="TestDoubles\TestHttpResponse.cs" />
+    <Compile Include="TestDoubles\TestViewContext.cs" />
+    <Compile Include="TestDoubles\TestViewDataContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
