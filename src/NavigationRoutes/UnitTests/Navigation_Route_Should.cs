@@ -15,6 +15,24 @@ namespace UnitTests
     public class Navigation_Route_Should:RouteTesterBase
     {
         [Test]
+        public void Map_a_route_to_a_url_using_an_area()
+        {
+            var routes = new System.Web.Routing.RouteCollection();
+
+            routes.MapNavigationRoute<HomeController>("Home", c => c.Index(),"Admin");
+            routes.MapNavigationRoute<HomeController>("About", c => c.About(),"AdMin");
+
+            routes.Count.ShouldNotEqual(0);
+
+            var uh = GetUrlHelper(routes);
+
+            uh.RouteUrl("Navigation-Admin-Home-About").ShouldEqual("/admin/about");
+            var r = (Route)routes["Navigation-Admin-Home-About"];
+            r.DataTokens["area"].ToString().ShouldEqual("admin");
+            
+            uh.RouteUrl("Navigation-AdMin-Home-Index").ShouldEqual("/admin");
+        }
+        [Test]
         public void Map_a_route_to_a_url_matching_the_action_name()
         {
             var routes = new System.Web.Routing.RouteCollection();
@@ -26,7 +44,8 @@ namespace UnitTests
 
             var uh = GetUrlHelper(routes);
 
-            uh.RouteUrl("Navigation-Home-About").ShouldEqual("/about"); 
+            uh.RouteUrl("Navigation-Home-About").ShouldEqual("/about");
+            uh.RouteUrl("Navigation-Home-Index").ShouldEqual("/"); 
         }
 
         [Test]
