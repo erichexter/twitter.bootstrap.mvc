@@ -58,6 +58,8 @@ if (!String.IsNullOrEmpty(mvcHost.MasterPageFile)) {
     PushIndent("    ");
 }
 #>
+@using (Html.BeginForm())
+{
 
 <fieldset>
     <legend>@Model.GetLabel() <small>Details</small></legend>
@@ -83,6 +85,8 @@ foreach (ModelProperty property in GetModelProperties(mvcHost.ViewDataType)) {
         @Html.ActionLink("Cancel", "Index", null, new { @class = "btn" })
     </div>
 </fieldset>
+
+}
 <#
 // The following code closes the asp:Content tag used in the case of a master page and the body and html tags in the case of a regular view page
 #>
