@@ -38,14 +38,23 @@ namespace BootstrapMvcSample.Controllers
 
         public ActionResult Delete(int id)
         {
+            var model = _models.Get(id);
+            Attention("Do you really want to delete this?");
+            return View(model);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeletePost(int id)
+        {
             _models.Remove(_models.Get(id));
             Information("Your widget was deleted");
             if(_models.Count==0)
             {
                 Attention("You have deleted all the models! Create a new one to continue the demo.");
             }
-            return RedirectToAction("index");
+            return RedirectToAction("Index");
         }
+        
         public ActionResult Edit(int id)
         {
             var model = _models.Get(id);
