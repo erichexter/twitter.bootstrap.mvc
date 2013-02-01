@@ -1,0 +1,23 @@
+@using BootstrapSupport
+@model Object
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>@Model.GetLabel() <small>Details</small></legend>
+        <dl> <!-- consider class="dl-horizontal" for horizontal styling -->
+            @foreach (var property in Model.VisibleProperties())
+            {
+                <dt>
+                    @property.GetLabel().ToSeparatedWords()
+                </dt>
+                <dd>
+                    @Html.Display(property.Name)
+                </dd>
+            }
+        </dl>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn" })
+        </div>
+    </fieldset>
+}
