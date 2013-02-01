@@ -47,21 +47,23 @@ namespace NavigationRoutes
         }
 
 
-        public static NavigationRouteBuilder MapNavigationRoute<T>(this RouteCollection routes, string displayName, Expression<Func<T, ActionResult>> action,string areaName="") where T : IController
+        public static NavigationRouteBuilder MapNavigationRoute<T>(this RouteCollection routes, string displayName, Expression<Func<T, ActionResult>> action, string areaName="", bool breakAfter = false) where T : IController
         {
             var newRoute = new NamedRoute("", "", new MvcRouteHandler());
             newRoute.ToDefaultAction(action,areaName);
             newRoute.DisplayName = displayName;
+            newRoute.ShouldBreakAfter = breakAfter;
             routes.Add(newRoute.Name, newRoute);
             return new NavigationRouteBuilder(routes, newRoute);
         }
 
-        public static NavigationRouteBuilder AddChildRoute<T>(this NavigationRouteBuilder builder, string DisplayText, Expression<Func<T, ActionResult>> action,string areaName="") where T : IController
+        public static NavigationRouteBuilder AddChildRoute<T>(this NavigationRouteBuilder builder, string DisplayText, Expression<Func<T, ActionResult>> action, string areaName="", bool breakAfter = false) where T : IController
         {
             var childRoute = new NamedRoute("", "", new MvcRouteHandler());
             childRoute.ToDefaultAction<T>(action,areaName);
             childRoute.DisplayName = DisplayText;
             childRoute.IsChild = true;
+            childRoute.ShouldBreakAfter = breakAfter;
             builder._parent.Children.Add(childRoute);
             builder._routes.Add(childRoute.Name,childRoute);
             return builder;

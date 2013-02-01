@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
+using System.Text;
 
 namespace NavigationRoutes
 {
@@ -60,36 +61,64 @@ namespace NavigationRoutes
 
         public static MvcHtmlString NavigationListItemRouteLink(this HtmlHelper html, NamedRoute route)
         {
-            var li = new TagBuilder("li")
-                {
-                    InnerHtml = html.RouteLink(route.DisplayName, route.Name).ToString()
-                };
-            
+            var li = new TagBuilder("li");
+            li.InnerHtml = html.RouteLink(route.DisplayName, route.Name).ToString();
+
             if (CurrentRouteMatchesName(html, route.Name))
             {
                 li.AddCssClass("active");
             }
-            if (route.Children.Count() > 0)
+
+            if (route.Children.Any())
             {
-                //TODO: create a UL of child routes here.
-                li.AddCssClass("dropdown");
-                li.InnerHtml = "<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">" + route.DisplayName +"<b class=\"caret\"></b></a>";
-                var ul = new TagBuilder("ul");
-                ul.AddCssClass("dropdown-menu");
-                
-                foreach (var child in route.Children)
-                {
-                    var childLi = new TagBuilder("li");
-                    childLi.InnerHtml = html.RouteLink(child.DisplayName, child.Name).ToString();
-                    ul.InnerHtml += childLi.ToString();
-                }
-                //that would mean we need to make some quick
-                
-                li.InnerHtml = "<a href='#' class='dropdown-toggle' data-toggle='dropdown'>"+route.DisplayName + " <b class='caret'></b></a>" + ul.ToString();
-                
+                BuildChildMenu(html, route, li);
             }
-            return MvcHtmlString.Create(li.ToString(TagRenderMode.Normal));
+
+            // collect our html 
+            var tagBuilders = new List<TagBuilder>();
+            tagBuilders.Add(li);
+            if (route.ShouldBreakAfter)
+            {
+                var breakLi = new TagBuilder("li");
+                breakLi.AddCssClass("divider-vertical");
+                tagBuilders.Add(breakLi);
+            }
+            var tags = new StringBuilder();
+            tagBuilders.ForEach(b => tags.Append(b.ToString(TagRenderMode.Normal)));
+
+            return MvcHtmlString.Create(tags.ToString());
         }
+
+        private static void BuildChildMenu(HtmlHelper html, NamedRoute route, TagBuilder li)
+        {
+            // convert menu entry to dropdown
+            li.AddCssClass("dropdown");
+            li.InnerHtml = "<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">" + route.DisplayName +
+                           "<b class=\"caret\"></b></a>";
+
+            // build LIs for the children
+            var ul = new TagBuilder("ul");
+            ul.AddCssClass("dropdown-menu");
+            foreach (var child in route.Children)
+            {
+                var childLi = new TagBuilder("li");
+                childLi.InnerHtml = html.RouteLink(child.DisplayName, child.Name).ToString();
+                ul.InnerHtml += childLi.ToString();
+
+                // support for drop down list breaks 
+                if (child.ShouldBreakAfter)
+                {
+                    var breakLi = new TagBuilder("li");
+                    breakLi.AddCssClass("divider");
+                    ul.InnerHtml += breakLi.ToString();
+                }
+            }
+
+            // append the UL
+            li.InnerHtml = "<a href='#' class='dropdown-toggle' data-toggle='dropdown'>" + route.DisplayName +
+                           " <b class='caret'></b></a>" + ul.ToString();
+        }
+
 
         static bool CurrentRouteMatchesName(HtmlHelper html, string routeName)
         {
