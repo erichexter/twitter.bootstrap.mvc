@@ -10,7 +10,11 @@
     $p = new-mvcapplication foobar
     install-package Newtonsoft.Json
     install-package twitter.bootstrap.mvc4.sample -source $source
-    build-project $p    
+    build-project $p
+    #close and open solution to remove annoying build errors in temp files
+    $slnFile = $dte.Solution.FullName
+    close-solution
+    open-solution $slnFile        
     pop-location
 	$dte.ExecuteCommand("debug.start")
 }
