@@ -71,5 +71,11 @@ namespace BootstrapMvcSample.Controllers
             return View(model);
         }
 
+
+        internal ActionResult Admin()
+        {
+            // used for demonstrationg route filters
+            throw new NotImplementedException();
+        }
     }
 }

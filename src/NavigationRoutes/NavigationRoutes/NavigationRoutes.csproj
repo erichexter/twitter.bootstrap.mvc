@@ -76,6 +76,7 @@
     <Compile Include="NavigationExtensions.cs" />
     <Compile Include="NavigationRouteConfigurationExtensions.cs" />
     <Compile Include="NavigationRouteFilter.cs" />
+    <Compile Include="NavigationRouteOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

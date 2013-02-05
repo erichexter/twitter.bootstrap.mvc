@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Should;
@@ -19,8 +20,8 @@ namespace UnitTests
         {
             var routes = new System.Web.Routing.RouteCollection();
 
-            routes.MapNavigationRoute<HomeController>("Home", c => c.Index(),"Admin");
-            routes.MapNavigationRoute<HomeController>("About", c => c.About(),"AdMin");
+            routes.MapNavigationRoute<HomeController>("Home", c => c.Index(), "", new NavigationRouteOptions{ AreaName = "Admin"});
+            routes.MapNavigationRoute<HomeController>("About", c => c.About(), "", new NavigationRouteOptions { AreaName = "AdMin" });
 
             routes.Count.ShouldNotEqual(0);
 
@@ -67,7 +68,7 @@ namespace UnitTests
         {
             var routes = RouteTable.Routes;
             var filter = new NullFilter();
-            NavigationRoutes.NavigationRoutes.Filters.Add(filter);
+            NavigationRoutes.NavigationRouteFilters.Filters.Add(filter);
             routes.MapNavigationRoute<HomeController>("Home", c => c.Index());
 
             NavigationRoutes.NavigationViewExtensions.Navigation(null);
@@ -123,6 +124,19 @@ namespace UnitTests
             routes.Count().ShouldEqual(1);
             var namespaces = (string[]) ((NamedRoute) routes["Navigation-Home-Index"]).DataTokens["Namespaces"];
             namespaces.ShouldContain("UnitTests");
+        }
+
+        [Test]
+        public void add_filter_tokens()
+        {
+            var filterTokenText = "foo";
+            var routes = new System.Web.Routing.RouteCollection();
+            routes.MapNavigationRoute<HomeController>("Home", c => c.Index(), "", new NavigationRouteOptions { FilterToken = filterTokenText });
+
+            Assert.IsTrue(((NamedRoute)routes["Navigation-Home-Index"]).DataTokens.HasFilterToken());
+
+            var filterToken = (string)((NamedRoute)routes["Navigation-Home-Index"]).DataTokens.FilterToken();
+            filterToken.ShouldEqual(filterTokenText);
         }
     }
 }
