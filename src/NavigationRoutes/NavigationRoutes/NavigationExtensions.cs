@@ -11,6 +11,11 @@ using System.Text;
 
 namespace NavigationRoutes
 {
+    public class Defaults
+    {
+        public const string FILTER_TOKEN_KEY = "FilterToken";
+    }
+
     public class CompositeMvcHtmlString : IHtmlString
     {
         readonly IEnumerable<IHtmlString> _strings;
@@ -26,7 +31,7 @@ namespace NavigationRoutes
         }
     }
 
-    public static class NavigationRoutes
+    public static class NavigationRouteFilters
     {
         public static List<INavigationRouteFilter> Filters=new List<INavigationRouteFilter>();
     }
@@ -36,7 +41,9 @@ namespace NavigationRoutes
         public static IHtmlString Navigation(this HtmlHelper helper)
         {
             return new CompositeMvcHtmlString(
-                GetRoutesForCurrentRequest(RouteTable.Routes,NavigationRoutes.Filters).Select(namedRoute => helper.NavigationListItemRouteLink(namedRoute)));
+                GetRoutesForCurrentRequest(RouteTable.Routes,NavigationRouteFilters.Filters)
+                .GroupBy(route => route.NavigationGroup)
+                .Select(routeGroup => helper.NavigationListItemRouteLink(routeGroup.Select(g=>g))));
         }
 
         public static IEnumerable<NamedRoute> GetRoutesForCurrentRequest(RouteCollection routes,IEnumerable<INavigationRouteFilter> routeFilters)
@@ -59,34 +66,52 @@ namespace NavigationRoutes
             return navigationRoutes;
         }
 
-        public static MvcHtmlString NavigationListItemRouteLink(this HtmlHelper html, NamedRoute route)
+        public static MvcHtmlString NavigationListItemRouteLink(this HtmlHelper html, IEnumerable<NamedRoute> routes)
         {
-            var li = new TagBuilder("li");
-            li.InnerHtml = html.RouteLink(route.DisplayName, route.Name).ToString();
-
-            if (CurrentRouteMatchesName(html, route.Name))
+            var ul = new TagBuilder("ul");
+            ul.AddCssClass("nav");
+            
+            var namedRoutes = routes as IList<NamedRoute> ?? routes.ToList();
+            if (namedRoutes.Any(r=>r.Options.IsRightAligned))
             {
-                li.AddCssClass("active");
+                ul.AddCssClass("pull-right");
             }
 
-            if (route.Children.Any())
-            {
-                BuildChildMenu(html, route, li);
-            }
-
-            // collect our html 
             var tagBuilders = new List<TagBuilder>();
-            tagBuilders.Add(li);
-            if (route.ShouldBreakAfter)
+
+            foreach (var route in namedRoutes)
             {
-                var breakLi = new TagBuilder("li");
-                breakLi.AddCssClass("divider-vertical");
-                tagBuilders.Add(breakLi);
+                var li = new TagBuilder("li");
+                li.InnerHtml = html.RouteLink(route.DisplayName, route.Name).ToString();
+                if (route.Options.IsRightAligned)
+                {
+                    li.AddCssClass("pull-right");
+                }
+
+                if (CurrentRouteMatchesName(html, route.Name))
+                {
+                    li.AddCssClass("active");
+                }
+
+                if (route.Children.Any())
+                {
+                    BuildChildMenu(html, route, li);
+                }
+
+                tagBuilders.Add(li);
+                if (route.Options.HasBreakAfter)
+                {
+                    var breakLi = new TagBuilder("li");
+                    breakLi.AddCssClass("divider-vertical");
+                    tagBuilders.Add(breakLi);
+                }
+                
             }
             var tags = new StringBuilder();
             tagBuilders.ForEach(b => tags.Append(b.ToString(TagRenderMode.Normal)));
+            ul.InnerHtml = tags.ToString();
 
-            return MvcHtmlString.Create(tags.ToString());
+            return MvcHtmlString.Create(ul.ToString(TagRenderMode.Normal));
         }
 
         private static void BuildChildMenu(HtmlHelper html, NamedRoute route, TagBuilder li)
@@ -106,7 +131,7 @@ namespace NavigationRoutes
                 ul.InnerHtml += childLi.ToString();
 
                 // support for drop down list breaks 
-                if (child.ShouldBreakAfter)
+                if (child.Options.HasBreakAfter)
                 {
                     var breakLi = new TagBuilder("li");
                     breakLi.AddCssClass("divider");
@@ -134,5 +159,19 @@ namespace NavigationRoutes
         }
     }
 
-   
+    public static class RouteValueDictionaryExtensions
+    {
+        
+
+        public static string FilterToken(this RouteValueDictionary routeValues)
+        {
+            return (string)routeValues[Defaults.FILTER_TOKEN_KEY];
+        }
+
+        public static bool HasFilterToken(this RouteValueDictionary routeValues)
+        {
+            return routeValues.ContainsKey(Defaults.FILTER_TOKEN_KEY);
+        }
+
+    }
 }
