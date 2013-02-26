@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
@@ -8,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
+using System.ComponentModel.DataAnnotations;
 
 namespace BootstrapSupport
 {
@@ -30,12 +32,22 @@ namespace BootstrapSupport
             {
                 elementType = Model.GetType().GetGenericArguments()[0];
             }
-            return elementType.GetProperties().Where(info => info.Name != elementType.IdentifierPropertyName()).ToArray();
+            return elementType.GetProperties().Where(info => info.Name != elementType.IdentifierPropertyName()).OrderedByDisplayAttr().ToArray();
         }
 
         public static PropertyInfo[] VisibleProperties(this Object model)
         {
-            return model.GetType().GetProperties().Where(info => info.Name != model.IdentifierPropertyName()).ToArray();
+            return model.GetType().GetProperties().Where(info => info.Name != model.IdentifierPropertyName()).OrderedByDisplayAttr().ToArray();
+        }
+
+        // Support for Order property in DisplayAttribute ([Display(..., Order = n)])
+        public static IOrderedEnumerable<PropertyInfo> OrderedByDisplayAttr(this IEnumerable<PropertyInfo> collection)
+        {
+            return collection.OrderBy(col =>
+            {
+                var attr = col.GetAttribute<DisplayAttribute>();
+                return (attr != null ? attr.GetOrder() : null) ?? 0;
+            });
         }
 
         public static RouteValueDictionary GetIdValue(this object model)
