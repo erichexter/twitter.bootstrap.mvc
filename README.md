@@ -42,4 +42,6 @@ From a separate VS instance do an `install-package` for the local package your i
 Or, to start a fresh MCV project with all `twitter.bootstrap.mvc4.*` installed,
 run `Test\EndToEnd\test.ps1`. 
 
+Before your pull request will be accepted you will need to complete the Contributor Agrement: http://sdrv.ms/13eMRXm
+
 Brought to you by [Eric Hexter](http://lostechies.com/erichexter/)
