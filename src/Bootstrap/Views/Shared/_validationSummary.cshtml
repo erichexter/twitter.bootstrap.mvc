@@ -1,7 +1,37 @@
-@if (ViewData.ModelState.Any(x => x.Value.Errors.Any())) 
-{ 
-   <div class="alert alert-error"> 
-      <a class="close" data-dismiss="alert">&times;</a> 
-      @Html.ValidationSummary(true)
-   </div>
+@{
+    // NOTE: This constant controls whether property validation failures will be excluded from the summary
+    const bool ExcludePropertyFailures = true;
+    var renderSummary = false;
+
+    if (ExcludePropertyFailures)
+    {
+        // Here we need to figure out if there are going to be any validation failures that are not related to a property
+        // If there are none found, we don't want to display the alert div
+
+        // This logic is taken from System.Web.Mvc.Html.ValidationExtensions.GetModelStateList(HtmlHelper htmlHelper, bool excludePropertyErrors)
+        // which is eventually invoked by calling @Html.ValidationSummary(ExcludePropertyFailures)
+        // The call to ViewData.ModelState.TryGetValue will determine whether there are any validation failures that are not related to a property
+        ModelState state;
+        ViewData.ModelState.TryGetValue(ViewData.TemplateInfo.HtmlFieldPrefix, out state);
+
+        if (state != null)
+        {
+            renderSummary = true;
+        }
+    }
+    else
+    {
+        if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+        {
+            renderSummary = true;
+        }
+    }
+
+    if (renderSummary)
+    {
+        <div class="alert alert-error">
+            <a class="close" data-dismiss="alert">&times;</a>
+            @Html.ValidationSummary(ExcludePropertyFailures)
+        </div>
+    }
 }
