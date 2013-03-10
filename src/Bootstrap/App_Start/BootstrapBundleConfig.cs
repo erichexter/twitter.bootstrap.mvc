@@ -12,6 +12,7 @@ namespace BootstrapSupport
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery-migrate-{version}.js",
                 "~/Scripts/bootstrap.js",
+                "~/Scripts/bootstrap.toggle.js",
                 "~/Scripts/jquery.validate.js",
                 "~/scripts/jquery.validate.unobtrusive.js",
                 "~/Scripts/jquery.validate.unobtrusive-custom-for-bootstrap.js"
