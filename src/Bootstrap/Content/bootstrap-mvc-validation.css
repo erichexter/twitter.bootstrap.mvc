@@ -2,3 +2,8 @@
 {
     list-style-type: none;
 }
+
+.validation-summary-valid
+{
+    display: none;
+}
