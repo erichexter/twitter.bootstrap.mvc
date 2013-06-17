@@ -18,6 +18,6 @@
     <file src="Bootstrap\Controllers\Example*.cs" target="Content\Controllers"></file>
     <file src="Bootstrap\NavigationRouteFilterExamples\*.*" target="Content\NavigationRouteFilterExamples"></file>
     <file src="Bootstrap\Models\*.*" target="Content\Models"></file>
-    <file src="Bootstrap\Views\ExampleLayouts\*.*" target="Content\Views\ExampleLayouts"></file>
+    <file src="Bootstrap\Views\examplelayouts\*.*" target="Content\Views\examplelayouts"></file>
   </files>
 </package>
