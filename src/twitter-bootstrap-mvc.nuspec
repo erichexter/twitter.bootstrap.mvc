@@ -13,7 +13,7 @@
     <releaseNotes>https://github.com/erichexter/twitter.bootstrap.mvc/commits/master</releaseNotes>
     <dependencies>
         <dependency id="html5shiv" />
-	      <dependency id="twitter.bootstrap" />
+	      <dependency id="twitter.bootstrap" version="2.3.2" />
       	<dependency id="navigationroutes.mvc4" />
 	      <dependency id="microsoft.aspnet.web.optimization" version="1.0.0"/>
       	<dependency id="jquery" />
