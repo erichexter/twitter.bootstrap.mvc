@@ -10,3 +10,4 @@ $o= resolve-path $path
 "To test these packages add a nuget source (in visual studio) to:"
 "$o" 
 " "
+$x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
