@@ -13,12 +13,13 @@
     <releaseNotes>https://github.com/erichexter/twitter.bootstrap.mvc/commits/master</releaseNotes>
     <dependencies>
         <dependency id="html5shiv" />
-	      <dependency id="twitter.bootstrap" version="2.3.2" />
+        <dependency id="jquery" />
+        <dependency id="jquery.migrate" />
+	      <dependency id="bootstrap"  />
       	<dependency id="navigationroutes.mvc4" />
-	      <dependency id="microsoft.aspnet.web.optimization" version="1.0.0"/>
-      	<dependency id="jquery" />
-      	<dependency id="jquery.migrate" />
+	      <dependency id="microsoft.aspnet.web.optimization" />
       	<dependency id="Microsoft.jQuery.Unobtrusive.Ajax" />
+        <dependency id="jQuery.Validation"/>
       	<dependency id="Microsoft.jQuery.Unobtrusive.Validation" />
     </dependencies> 
   </metadata>
