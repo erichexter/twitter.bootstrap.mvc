@@ -36,7 +36,7 @@ namespace <#= Model.Namespace #>
     var lambdaVar = modelVariable[0];
     var isObjectContext = typeof(ObjectContext).IsAssignableFrom(Model.ContextType);
 #>
-    public class <#= Model.ControllerName #> : BootstrapBaseController
+    public class <#= Model.ControllerName #> : BootstrapMvcSample.Controllers.BootstrapBaseController
     {
         private <#= Model.ContextType.Name #> db = new <#= Model.ContextType.Name #>();
 
@@ -160,8 +160,24 @@ namespace <#= Model.Namespace #>
 
         //
         // GET: <#= routePrefix #>Delete/5
+        
+		[HttpGet]
+		public ActionResult Delete(<#= primaryKey.ShortTypeName #> id)
+        {
+<# if(isObjectContext) { #>
+            <#= modelName #> <#= modelVariable #> = db.<#= entitySetName #>.Single(<#= lambdaVar #> => <#= lambdaVar #>.<#= primaryKey.Name #> == id);
+<# } else { #>
+            <#= modelName #> <#= modelVariable #> = db.<#= entitySetName #>.Find(id);
+<# } #>
+            if (<#= modelVariable #> == null)
+            {
+                return HttpNotFound();
+            }
+            return View(<#= modelVariable #>);
+        }
 
-        public ActionResult Delete(<#= primaryKey.ShortTypeName #> id)
+		[HttpPost, ActionName("Delete")]
+        public ActionResult DeleteModel(<#= primaryKey.ShortTypeName #> id)
         {
 <# if(isObjectContext) { #>
             <#= modelName #> <#= modelVariable #> = db.<#= entitySetName #>.Single(<#= lambdaVar #> => <#= lambdaVar #>.<#= primaryKey.Name #> == id);

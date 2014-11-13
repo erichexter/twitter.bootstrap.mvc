@@ -15,6 +15,7 @@
 <#
 MvcTextTemplateHost mvcHost = MvcTemplateHost;
 #>
+@using BootstrapSupport
 @model <#= mvcHost.ViewDataTypeName #>
 <#
 // The following chained if-statement outputs the file header code and markup for a partial view, a content page, or a regular view.
@@ -35,8 +36,6 @@ if (!String.IsNullOrEmpty(mvcHost.MasterPageFile)) {
 }
 #>
 }
-
-<h2><#= mvcHost.ViewName#></h2>
 
 <#
 } else {
@@ -75,8 +74,8 @@ if (mvcHost.ReferenceScriptLibraries) {
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend><#= mvcHost.ViewDataType.Name #></legend>
+    <fieldset class="form-horizontal">
+        <legend>@Model.GetLabel() <small>Details</small></legend>
 
 <#
 foreach (ModelProperty property in GetModelProperties(mvcHost.ViewDataType)) {
@@ -86,11 +85,11 @@ foreach (ModelProperty property in GetModelProperties(mvcHost.ViewDataType)) {
 <#
         if (property.IsForeignKey) {
 #>
-			@Html.LabelFor(model => model.<#= property.Name #>, "<#= property.AssociationName #>")
+			@Html.LabelFor(model => model.<#= property.Name #>, "<#= property.AssociationName #>", new { @class = "control-label" })
 <#
         } else {
 #>
-			@Html.LabelFor(model => model.<#= property.Name #>)
+			@Html.LabelFor(model => model.<#= property.Name #>, new { @class = "control-label" })
 <#
         }
 #>
@@ -115,11 +114,10 @@ foreach (ModelProperty property in GetModelProperties(mvcHost.ViewDataType)) {
     }
 }
 #>
-        <div class="control-group">
-			<div class="controls">
-				<input type="submit" value="Create" class="btn" /> &nbsp; @Html.ActionLink("Cancel", "Index")
-			</div>
-        </div>
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary">Save changes</button>
+			@Html.ActionLink("Cancel", "Index", null, new { @class = "btn " })
+		</div>
     </fieldset>
 }
 
@@ -127,21 +125,6 @@ foreach (ModelProperty property in GetModelProperties(mvcHost.ViewDataType)) {
 if(mvcHost.IsContentPage && mvcHost.ReferenceScriptLibraries) {
 #>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-
-	<script>
-
-	$.validator.setDefaults({
-            highlight: function (element) {
-                $(element).closest(".control-group").addClass("error");
-            },
-            unhighlight: function (element) {
-                $(element).closest(".control-group").removeClass("error");
-            }
-        });
-	</script>
-}
 <#
 }
 #>

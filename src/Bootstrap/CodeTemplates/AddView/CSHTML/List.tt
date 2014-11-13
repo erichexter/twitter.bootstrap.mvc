@@ -15,6 +15,7 @@
 <#
 MvcTextTemplateHost mvcHost = MvcTemplateHost;
 #>
+@using BootstrapSupport
 @model IEnumerable<#= "<" + mvcHost.ViewDataTypeName + ">" #>
 <#
 // The following chained if-statement outputs the file header code and markup for a partial view, a content page, or a regular view.
@@ -36,7 +37,7 @@ if (!String.IsNullOrEmpty(mvcHost.MasterPageFile)) {
 #>
 }
 
-<h2><#= mvcHost.ViewName#></h2>
+<h4><@Model.GetLabel() <small>Listing</h4>
 
 <#
 } else {
@@ -58,10 +59,9 @@ if (!String.IsNullOrEmpty(mvcHost.MasterPageFile)) {
     PushIndent("    ");
 }
 #>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+
+<table class="table table-striped">
+    <caption></caption>
 	<thead>
     <tr>
 <#
@@ -79,7 +79,6 @@ foreach (ModelProperty property in properties) {
         <th></th>
     </tr>
 	</thead>
-	<tbody>
 @foreach (var item in Model) {
     <tr>
 <#
@@ -92,30 +91,34 @@ foreach (ModelProperty property in properties) {
 <#
     }
 }
+#>
+        <td>
+            <div class="btn-group">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    Action
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                        @{
+                            @Html.TryPartial("_actions", item)                            
+                            var routevalues = item.GetIdValue();  
+                            <li>@Html.ActionLink("Edit", "Edit", routevalues)</li>
+                            <li>@Html.ActionLink("Details", "Details", routevalues)</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Delete", "Delete", routevalues)</li>
+                               
+                        }
+                </ul>
+            </div>
 
-string pkName = GetPrimaryKeyName(mvcHost.ViewDataType);
-if (pkName != null) {
-#>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.<#= pkName #> }, new { @class="btn" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.<#= pkName #> }, new { @class="btn" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.<#= pkName #> }, new { @class="btn" })
         </td>
-<#
-} else {
-#>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }, new { @class="btn" }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }, new { @class="btn" }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class="btn" })
-        </td>
-<#
-}
-#>
     </tr>
 }
-</tbody>
 </table>
+<p>
+    @Html.ActionLink("Create New", "Create", null, new {@class = "btn"})
+</p>
+
 <#
 // The following code closes the asp:Content tag used in the case of a master page and the body and html tags in the case of a regular view page
 #>

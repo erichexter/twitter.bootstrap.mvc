@@ -16,6 +16,7 @@
     </dependencies> 
   </metadata>
   <files>
+    <file src="Bootstrap\tools\CodeTemplates\*.*" target="tools"></file>
     <file src="Bootstrap\CodeTemplates\**\*.*" target="Content\CodeTemplates"></file>
   </files>
 </package>

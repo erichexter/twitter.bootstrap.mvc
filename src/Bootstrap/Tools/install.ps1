@@ -1,6 +1,5 @@
 param($installPath, $toolsPath, $package, $project)
 
-
 $proj = $project
 
 $globalasax = $null
@@ -34,11 +33,3 @@ if($globalasax -ne $null) {
         $_.Exception.ToString()| out-default
    }
 }
-
-
-#$project.ProjectItems.Item("codetemplates").ProjectItems.Item("addview").projectitems.item("cshtml").projectitems.item("bootstrapform.tt").properties.item("customtool").Value=""
-
-
-
-
-

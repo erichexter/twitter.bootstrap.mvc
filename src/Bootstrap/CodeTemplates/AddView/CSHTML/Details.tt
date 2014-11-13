@@ -16,6 +16,7 @@
 <#
 MvcTextTemplateHost mvcHost = MvcTemplateHost;
 #>
+@using BootstrapSupport
 @model <#= mvcHost.ViewDataTypeName #>
 <#
 // The following chained if-statement outputs the file header code and markup for a partial view, a content page, or a regular view.
@@ -36,8 +37,6 @@ if (!String.IsNullOrEmpty(mvcHost.MasterPageFile)) {
 }
 #>
 }
-
-<h2><#= mvcHost.ViewName#></h2>
 
 <#
 } else {
@@ -60,24 +59,23 @@ if (!String.IsNullOrEmpty(mvcHost.MasterPageFile)) {
 }
 #>
 <fieldset>
-    <legend><#= mvcHost.ViewDataType.Name #></legend>
+    <legend>@Model.GetLabel() <small>Details</small></legend>
+	    <dl>  <!-- consider adding class="dl-horizontal" for horizontal styling -->
 <#
 foreach (ModelProperty property in GetModelProperties(mvcHost.ViewDataType)) {
     if (!property.IsPrimaryKey && property.Scaffold) {
 #>
-
-    <dl class="dl-horizontal">
-		<dt>
-			@Html.DisplayNameFor(model => model.<#= property.ValueExpression #>)
-		</dt>
-		<dd>
-			@Html.DisplayFor(model => model.<#= property.ValueExpression #>)
-		</dd>
-	</dl>
+			<dt>
+				@Html.DisplayNameFor(model => model.<#= property.ValueExpression #>)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.<#= property.ValueExpression #>)
+			</dd>
 <#
     }
 }
 #>
+	</dl>
 </fieldset>
 <p>
 <#
