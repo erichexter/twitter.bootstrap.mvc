@@ -1,4 +1,4 @@
-@using System.Web.Optimization
+﻿@using System.Web.Optimization
 @using BootstrapSupport
 @using NavigationRoutes
 <!DOCTYPE html>
@@ -13,21 +13,22 @@
         @* favicons and touch icons go here *@
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="#" title="change in _bootstrapLayout.basic.cshtml">Application Name</a>
-                    <div class="nav-collapse collapse">
-                          @Html.Navigation()
-                    </div>
+                    </button>
+                    <a class="navbar-brand" href="#">Project name</a>
                 </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    @Html.Navigation()
+                </div><!--/.nav-collapse -->
             </div>
-        </div>        
+        </nav>
         <div class="container">
             @Html.Partial("_alerts")
             @Html.Partial("_validationSummary")
