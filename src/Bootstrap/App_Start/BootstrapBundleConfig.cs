@@ -23,6 +23,8 @@ namespace BootstrapSupport
                 "~/Content/bootstrap-responsive.css",
                 "~/Content/bootstrap-mvc-validation.css"
                 ));
+
+            bundles.Add(new StyleBundle("~/content/narrow").Include("~/Content/jumbotron-narrow.css"));
         }
     }
 }
