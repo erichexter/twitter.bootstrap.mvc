@@ -11,8 +11,8 @@
     {
         if (TempData.ContainsKey(key))
          {
-             <div class="alert alert-@key">
-                 <button type="button" class="close" data-dismiss="alert">x</button>
+             <div class="alert alert-@key" role="alert">
+                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                  @TempData[key]
              </div>
          }
