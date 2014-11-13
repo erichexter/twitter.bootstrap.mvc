@@ -27,11 +27,10 @@
             }
             <td>
                 <div class="btn-group">
-                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                        Action
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        Action <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
                         @{
                             @Html.TryPartial("_actions", model)                            
                             var routevalues = model.GetIdValue();  
@@ -51,6 +50,6 @@
 
 </table>
 <p>
-    @Html.ActionLink("Create New", "Create", null, new {@class = "btn"})
+    @Html.ActionLink("Create New", "Create", null, new {@class = "btn btn-default"})
 </p>
 

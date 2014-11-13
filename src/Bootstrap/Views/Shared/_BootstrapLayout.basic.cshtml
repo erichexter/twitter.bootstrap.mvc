@@ -25,7 +25,9 @@
                     <a class="navbar-brand" href="#">Project name</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
-                    @Html.Navigation()
+                    <ul class="nav navbar-nav">
+                        @Html.Navigation()
+                    </ul>
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
@@ -38,8 +40,8 @@
                 <p>&copy; Company @System.DateTime.Now.ToString("yyyy")</p>
             </footer> 
         </div>
-         @Scripts.Render("~/js")
-         @RenderSection("Scripts", required: false)
+        @Scripts.Render("~/js")
+        @RenderSection("Scripts", required: false)
     </body>
 </html>
 
