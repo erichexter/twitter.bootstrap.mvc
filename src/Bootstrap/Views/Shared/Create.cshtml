@@ -3,21 +3,29 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-    <fieldset class="form-horizontal">
-        <legend>@Model.GetLabel() <small>Details</small></legend>
-        @foreach (var property in Model.VisibleProperties())
+    
+        <h4>@Model.GetLabel() <small>Details</small></h4>
+        foreach (var property in Model.VisibleProperties())
         {
-            using(Html.ControlGroupFor(property.Name)){
-                @Html.Label(property.Name.ToSeparatedWords(), new { @class = "control-label" })
-                 <div class="controls">
-                     @Html.Editor(property.Name, new { @class = "input-xlarge" })
-                     @Html.ValidationMessage(property.Name, null, new { @class = "help-inline" })
-                 </div>
-            }
+            <div class="form-group">
+                @Html.Label(property.Name.ToSeparatedWords(), new {@class=""})
+                    @Html.Editor(property.Name,new { htmlAttributes = new { @class = "form-control" }, })
+
+                    @Html.ValidationMessage(property.Name, null, new { @class = "help-block" })    
+            </div>
         }
-		<div class="form-actions">
+        <div class="form-actions">
             <button type="submit" class="btn btn-primary">Save changes</button>
-            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn " })
+            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-link " })
           </div>
-    </fieldset>
 }
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("input").addClass("form-control")
+    });
+</script>
+
